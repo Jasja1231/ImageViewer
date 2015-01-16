@@ -25,7 +25,10 @@ public class mainFrame extends javax.swing.JFrame {
        displayPanel.setLayout(new BorderLayout());
        displayPanel.add(firstPanelImageEditor1 ,BorderLayout.CENTER );
        displayPanel.add(seconPanelImageBrowse1 ,BorderLayout.WEST);
+       displayPanel.add(thirdPanelOperation1 ,BorderLayout.EAST);
+       
        seconPanelImageBrowse1.setVisible(false);
+       thirdPanelOperation1.setVisible(false);
     }
 
     /**
@@ -41,9 +44,11 @@ public class mainFrame extends javax.swing.JFrame {
         buttonImageEditor = new javax.swing.JButton();
         buttonAddDirectories = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
+        buttonOperations = new javax.swing.JButton();
         displayPanel = new javax.swing.JPanel();
         firstPanelImageEditor1 = new ImageEditorPackage.FirstPanelImageEditor();
         seconPanelImageBrowse1 = new ImageEditorPackage.SeconPanelImageBrowse();
+        thirdPanelOperation1 = new ImageEditorPackage.ThirdPanelOperation();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 0));
@@ -71,6 +76,13 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonOperations.setText("Operations");
+        buttonOperations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonOperationsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
         buttonPanelLayout.setHorizontalGroup(
@@ -80,12 +92,14 @@ public class mainFrame extends javax.swing.JFrame {
                 .addComponent(buttonImageEditor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonOperations)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(buttonAddDirectories)
                 .addContainerGap())
         );
 
-        buttonPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonExit, buttonImageEditor});
+        buttonPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonExit, buttonImageEditor, buttonOperations});
 
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +108,8 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonImageEditor)
                     .addComponent(buttonAddDirectories)
-                    .addComponent(buttonExit))
+                    .addComponent(buttonExit)
+                    .addComponent(buttonOperations))
                 .addContainerGap())
         );
 
@@ -108,6 +123,7 @@ public class mainFrame extends javax.swing.JFrame {
         seconPanelImageBrowse1.setBackground(new java.awt.Color(255, 102, 0));
         seconPanelImageBrowse1.setFocusCycleRoot(true);
         displayPanel.add(seconPanelImageBrowse1, "secondIB");
+        displayPanel.add(thirdPanelOperation1, "card4");
 
         getContentPane().add(displayPanel, java.awt.BorderLayout.CENTER);
 
@@ -135,6 +151,20 @@ public class mainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_buttonAddDirectoriesActionPerformed
+    boolean thirdPanelOperationOpen   = false;
+    private void buttonOperationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOperationsActionPerformed
+        // TODO add your handling code here:
+        if(thirdPanelOperationOpen == false){
+             thirdPanelOperation1.setVisible(true);
+             thirdPanelOperationOpen = true;
+             this.pack();
+        }
+         else 
+            if(thirdPanelOperationOpen == true){
+                thirdPanelOperation1.setVisible(false);
+                thirdPanelOperationOpen = false;
+        }
+    }//GEN-LAST:event_buttonOperationsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +206,11 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JButton buttonAddDirectories;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonImageEditor;
+    private javax.swing.JButton buttonOperations;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JPanel displayPanel;
     private ImageEditorPackage.FirstPanelImageEditor firstPanelImageEditor1;
     private ImageEditorPackage.SeconPanelImageBrowse seconPanelImageBrowse1;
+    private ImageEditorPackage.ThirdPanelOperation thirdPanelOperation1;
     // End of variables declaration//GEN-END:variables
 }
