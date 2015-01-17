@@ -31,17 +31,25 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
     
     
     private int count = 0;
-    private JTextField displayDirName1  = new JTextField(15);
-    private JTextField displayDirName2  = new JTextField(15);
-    private JTextField displayDirName3  = new JTextField(15);
-    private JTextField displayDirName4  = new JTextField(15);
-    private JTextField displayDirName5  = new JTextField(15);
+     JTextField displayDirName1  = new JTextField(15);
+     JTextField displayDirName2  = new JTextField(15);
+     JTextField displayDirName3  = new JTextField(15);
+     JTextField displayDirName4  = new JTextField(15);
+     JTextField displayDirName5  = new JTextField(15);
     
-    private    JPanel panelOfDirectory1 = new JPanel();
-    private    JPanel panelOfDirectory2 = new JPanel();
-    private    JPanel panelOfDirectory3 = new JPanel();
-    private    JPanel panelOfDirectory4 = new JPanel();
-    private    JPanel panelOfDirectory5 = new JPanel();
+     JPanel panelOfDirectory1 = new JPanel();
+     JPanel panelOfDirectory2 = new JPanel();
+     JPanel panelOfDirectory3 = new JPanel();
+     JPanel panelOfDirectory4 = new JPanel();
+     JPanel panelOfDirectory5 = new JPanel();
+     //Initializing files which we will choose later  , at the beginning null - no directory chosen
+     private File file1 = null;
+     private File file2 = null;
+     private File file3 = null;
+     private File file4 = null;
+     private File file5 = null;
+     
+    //array for Generic Filter of files that should be in  our chosen directory
     String[] array = {".jpg",".png", ".jpeg"," .tiff",".tif"," .bmp" ,".JPG" };
     /**
      * Creates new form SeconPanelImageBrowse
@@ -61,7 +69,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         panelDirectories.add( panelOfDirectory4);
         panelDirectories.add( panelOfDirectory5);
          
-        //Filling panelOfDirecroryq
+        //Filling panelOfDirecrory11st directory filling 
         panelOfDirectory1.setVisible(false);
         panelOfDirectory1.setLayout(new BorderLayout());
         JButton buttonOpen1 = new JButton();
@@ -71,22 +79,23 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                 int option = chooser.showOpenDialog(SeconPanelImageBrowse.this);
                 
                 if(option ==JFileChooser.APPROVE_OPTION){
-                    File file = chooser.getSelectedFile();
-                     // if the user accidently click a file, then select the parent directory.
-                    if(!file.isDirectory()){
-                     file = file.getParentFile();
-                    }
+                    file1 = chooser.getSelectedFile();
                     GenericExtFilter filter = new GenericExtFilter(array);
-                    String[] list = file.list(filter);
+                     // if the user accidently click a file, then select the parent directory.
+                    if(!file1.isDirectory()){
+                        file1 = file1.getParentFile();
+                    }
+                    //checking if directory parent of a chosen accidentaly file(not directory) has images inside
+                    String[] list = file1.list(filter);
                     if(list.length == 0){
                         displayDirName1.setText("No images in this directory");
                     }
                     else{
-                        displayDirName1.setText(((chooser.getSelectedFile()!=null)?file.getPath():"nothing"));
+                        displayDirName1.setText(((chooser.getSelectedFile()!=null)?file1.getPath():"nothing"));
                     }
                 }
                 
-                
+                //if user canceled his request
                 if(option == JFileChooser.CANCEL_OPTION) {
                     displayDirName1.setText("You canceled.");
                 }
@@ -97,6 +106,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                //setting file to null , clear file(directory that we deleted
+                file1 = null;
                 displayDirName1.setText(null);
                 if(count == 1){
                     panelOfDirectory1.setVisible(false);
@@ -146,30 +157,29 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      panelTest.add(displayDirName1);
                      panelTest.add(buttonRemove1);
                      
-                     //panelTest.add(comboBox);
             panelOfDirectory1.add(panelTest);  
               
-            //2nd
+            //2nd chooser functionality adding
             panelOfDirectory2.setVisible(false);
-         panelOfDirectory2.setLayout(new BorderLayout());
+            panelOfDirectory2.setLayout(new BorderLayout());
             JButton buttonOpen2 = new JButton();
             buttonOpen2.addActionListener((ActionEvent e) -> {
                 JFileChooser chooser2 = new JFileChooser();
                 chooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser2.showOpenDialog(SeconPanelImageBrowse.this);
                  if(option ==JFileChooser.APPROVE_OPTION){
-                    File file = chooser2.getSelectedFile();
+                    file2 = chooser2.getSelectedFile();
                      // if the user accidently click a file, then select the parent directory.
-                    if(!file.isDirectory()){
-                     file = file.getParentFile();
+                    if(!file2.isDirectory()){
+                     file2 = file2.getParentFile();
                     }
                     GenericExtFilter filter = new GenericExtFilter(array);
-                    String[] list = file.list(filter);
+                    String[] list = file2.list(filter);
                     if(list.length == 0){
                         displayDirName2.setText("No images in this directory");
                     }
                     else{
-                        displayDirName2.setText(((chooser2.getSelectedFile()!=null)?file.getPath():"nothing"));
+                        displayDirName2.setText(((chooser2.getSelectedFile()!=null)?file2.getPath():"nothing"));
                     }
                 }
                 if(option == JFileChooser.CANCEL_OPTION) {
@@ -178,7 +188,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         });
             JButton buttonRemove2 = new JButton();
              buttonRemove2.addActionListener((ActionEvent e) -> {
-                
+                 //setting file to null , clear file(directory that we deleted)
+                file2 = null;
                 if(count == 2){
                      panelOfDirectory2.setVisible(false);
                      displayDirName2.setText(null);
@@ -222,8 +233,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             panelOfDirectory2.add(panelTest2);  
             
             
-            //3nd
-            //Added 3 components functionality
+            
+            //Added  functionality to 3rd directory chooser
             panelOfDirectory3.setVisible(false);
             panelOfDirectory3.setLayout(new BorderLayout());
             JButton buttonOpen3 = new JButton();
@@ -233,18 +244,18 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                 int option = chooser3.showOpenDialog(SeconPanelImageBrowse.this);
 
                  if(option ==JFileChooser.APPROVE_OPTION){
-                    File file = chooser3.getSelectedFile();
+                    file3 = chooser3.getSelectedFile();
                      // if the user accidently click a file, then select the parent directory.
-                    if(!file.isDirectory()){
-                     file = file.getParentFile();
+                    if(!file3.isDirectory()){
+                     file3 = file3.getParentFile();
                     }
                    GenericExtFilter filter = new GenericExtFilter(array);
-                    String[] list = file.list(filter);
+                    String[] list = file3.list(filter);
                     if(list.length == 0){
                         displayDirName3.setText("No images in this directory");
                     }
                     else{
-                        displayDirName3.setText(((chooser3.getSelectedFile()!=null)?file.getPath():"nothing"));
+                        displayDirName3.setText(((chooser3.getSelectedFile()!=null)?file3.getPath():"nothing"));
                     }
                 }
                 if(option == JFileChooser.CANCEL_OPTION) {
@@ -253,6 +264,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         });
             JButton buttonRemove3 = new JButton();
                buttonRemove3.addActionListener((ActionEvent e) -> {
+                   //setting file to null , clear file(directory that we deleted)
+                   file3 = null;
                  if(count == 3){
                      displayDirName3.setText(null);
                      panelOfDirectory3.setVisible(false);
@@ -286,8 +299,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      
             panelOfDirectory3.add(panelTest3);
            
-            //4th
-           
+            
+            //Adding functionality to 4th directory chooser
             panelOfDirectory4.setVisible(false);
             panelOfDirectory4.setLayout(new BorderLayout());
             JButton buttonOpen4 = new JButton();
@@ -296,18 +309,18 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                 chooser4.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser4.showOpenDialog(SeconPanelImageBrowse.this);
                 if(option ==JFileChooser.APPROVE_OPTION){
-                    File file = chooser4.getSelectedFile();
+                    file4 = chooser4.getSelectedFile();
                      // if the user accidently click a file, then select the parent directory.
-                    if(!file.isDirectory()){
-                     file = file.getParentFile();
+                    if(!file4.isDirectory()){
+                     file4 = file4.getParentFile();
                     }
                     GenericExtFilter filter = new GenericExtFilter(array);
-                    String[] list = file.list(filter);
+                    String[] list = file4.list(filter);
                     if(list.length == 0){
                         displayDirName4.setText("No images in this directory");
                     }
                     else{
-                        displayDirName4.setText(((chooser4.getSelectedFile()!=null)?file.getPath():"nothing"));
+                        displayDirName4.setText(((chooser4.getSelectedFile()!=null)?file4.getPath():"nothing"));
                     }
                 }
                 if(option == JFileChooser.CANCEL_OPTION) {
@@ -316,8 +329,10 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         });
             JButton buttonRemove4 = new JButton();
                  buttonRemove4.addActionListener((ActionEvent e) -> {
+                 //setting file to null , clear file(directory that we deleted)
+                 file4 = null; 
                  if(count == 4){
-                     displayDirName4.setText(null);
+                        displayDirName4.setText(null);
                      panelOfDirectory4.setVisible(false);
                      count--;
                  }
@@ -341,8 +356,9 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      
             panelOfDirectory4.add(panelTest4); 
             
-            //5th
             
+            
+            //Adding functionality to 5th directory chooser
             panelOfDirectory5.setVisible(false);
             panelOfDirectory5.setLayout(new BorderLayout());
             JButton buttonOpen5 = new JButton();
@@ -351,18 +367,18 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                 chooser5.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser5.showOpenDialog(SeconPanelImageBrowse.this);
                 if(option ==JFileChooser.APPROVE_OPTION){
-                    File file = chooser5.getSelectedFile();
+                     file5 = chooser5.getSelectedFile();
                      // if the user accidently click a file, then select the parent directory.
-                    if(!file.isDirectory()){
-                     file = file.getParentFile();
+                    if(!file5.isDirectory()){
+                     file5 = file5.getParentFile();
                     }
                     GenericExtFilter filter = new GenericExtFilter(array);
-                    String[] list = file.list(filter);
+                    String[] list = file5.list(filter);
                     if(list.length == 0){
                         displayDirName5.setText("No images in this directory");
                     }
                     else{
-                        displayDirName5.setText(((chooser5.getSelectedFile()!=null)?file.getPath():"nothing"));
+                        displayDirName5.setText(((chooser5.getSelectedFile()!=null)?file5.getPath():"nothing"));
                     }
                 }
                 if(option == JFileChooser.CANCEL_OPTION) {
@@ -371,6 +387,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         });
             JButton buttonRemove5 = new JButton();
               buttonRemove5.addActionListener((ActionEvent e) -> {
+                  //setting file to null , clear file(directory that we deleted)
+                  file5 = null;
                  if(count == 5){
                      displayDirName5.setText(null);
                      panelOfDirectory5.setVisible(false);
@@ -496,8 +514,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
     private void AddNewDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewDirectoryActionPerformed
         // TODO add your handling code here:
         if(count == 0 ){
-         panelOfDirectory1.setVisible(true);
-          count++;
+            panelOfDirectory1.setVisible(true);
+            count++;
           }
         else if(count == 1){
             count++;
@@ -521,6 +539,13 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
     private void buttonRemoveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveAllActionPerformed
         // TODO add your handling code here:
+     //deleting all selected files
+        file1 = null;
+        file2 = null;
+        file3 = null;
+        file4 = null;
+        file5 = null;
+    //Clear text fields
     displayDirName1.setText(null);
     displayDirName2.setText(null);
     displayDirName3.setText(null);
