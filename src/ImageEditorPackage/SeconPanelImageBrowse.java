@@ -565,7 +565,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_buttonSaveActionPerformed
-
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddNewDirectory;
