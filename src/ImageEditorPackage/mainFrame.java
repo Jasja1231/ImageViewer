@@ -9,6 +9,7 @@ package ImageEditorPackage;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.io.File;
 
 /**
  *
@@ -26,11 +27,35 @@ public class mainFrame extends javax.swing.JFrame {
        displayPanel.add(firstPanelImageEditor1 ,BorderLayout.CENTER );
        displayPanel.add(seconPanelImageBrowse1 ,BorderLayout.WEST);
        displayPanel.add(thirdPanelOperation1 ,BorderLayout.EAST);
+       seconPanelImageBrowse1.setParentFrame(this);
        
        seconPanelImageBrowse1.setVisible(false);
        thirdPanelOperation1.setVisible(false);
+
+       //constructComboBox(seconPanelImageBrowse1.getAllDirectories());
     }
 
+    public FirstPanelImageEditor getImageEditor(){
+        return this.firstPanelImageEditor1;
+    }
+    
+     public SeconPanelImageBrowse getImageBrowser(){
+        return this.seconPanelImageBrowse1;
+    }
+    
+    
+    /*public void constructComboBox(File[] directories){
+        
+        for(File dir : directories){
+            firstPanelImageEditor1.clearComboBox();
+            if(dir != null){
+                firstPanelImageEditor1.addToComboBox(dir.getName());
+            }
+            else if(dir == null){
+                firstPanelImageEditor1.addToComboBox("No directory");
+            }
+        }
+    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,32 +157,43 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void buttonImageEditorClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonImageEditorClicked
         // TODO add your handling code here:
-       // CardLayout card = (CardLayout) displayPanel.getLayout();
+        // CardLayout card = (CardLayout) displayPanel.getLayout();
         //card.show(displayPanel,"firstIE");
         seconPanelImageBrowse1.setVisible(false);
     }//GEN-LAST:event_buttonImageEditorClicked
 
+    boolean openDirectPanel = false;
     private void buttonAddDirectoriesClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddDirectoriesClicked
         // TODO add your handling code here:
         //CardLayout card = (CardLayout) displayPanel.getLayout();
         //card.show(displayPanel,"secondIB");
-        seconPanelImageBrowse1.setVisible(true);
-        seconPanelImageBrowse1.updateUI();
-        displayPanel.revalidate();
-        displayPanel.repaint();
+        if(openDirectPanel==false){
+            seconPanelImageBrowse1.setVisible(true);
+            openDirectPanel=true;
+            seconPanelImageBrowse1.updateUI();
+            displayPanel.revalidate();
+            displayPanel.repaint();
+        }
+        else{
+            seconPanelImageBrowse1.setVisible(false);
+            openDirectPanel=true;
+            seconPanelImageBrowse1.updateUI();
+            displayPanel.revalidate();
+            displayPanel.repaint();
+        }
     }//GEN-LAST:event_buttonAddDirectoriesClicked
 
     private void buttonAddDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddDirectoriesActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_buttonAddDirectoriesActionPerformed
+    
     boolean thirdPanelOperationOpen   = false;
     private void buttonOperationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOperationsActionPerformed
         // TODO add your handling code here:
         if(thirdPanelOperationOpen == false){
              thirdPanelOperation1.setVisible(true);
              thirdPanelOperationOpen = true;
-             this.pack();
+             
         }
          else 
             if(thirdPanelOperationOpen == true){
