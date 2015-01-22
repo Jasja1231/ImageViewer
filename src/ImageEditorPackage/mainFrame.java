@@ -176,7 +176,7 @@ public class mainFrame extends javax.swing.JFrame {
         }
         else{
             seconPanelImageBrowse1.setVisible(false);
-            openDirectPanel=true;
+            openDirectPanel=false;
             seconPanelImageBrowse1.updateUI();
             displayPanel.revalidate();
             displayPanel.repaint();
