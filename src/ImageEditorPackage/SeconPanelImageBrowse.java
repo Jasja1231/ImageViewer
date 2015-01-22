@@ -7,24 +7,18 @@ package ImageEditorPackage;
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
 
 
 /**
@@ -65,7 +59,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
      JFileChooser chooser4 = new JFileChooser();
      JFileChooser chooser5 = new JFileChooser();
      
-     JPanel jpn1 = new JPanel();
+     //JPanel jpn1 = new JPanel();
      JPanel jpn2 = new JPanel();
      JPanel jpn3 = new JPanel();
      JPanel jpn4 = new JPanel();
@@ -87,11 +81,11 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         
         panelDirectories.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         
-        panelDirectories.add( panelOfDirectory1);
-        panelDirectories.add( panelOfDirectory2);
-        panelDirectories.add( panelOfDirectory3);
-        panelDirectories.add( panelOfDirectory4);
-        panelDirectories.add( panelOfDirectory5);
+        panelDirectories.add(panelOfDirectory1);
+        panelDirectories.add(panelOfDirectory2);
+        panelDirectories.add(panelOfDirectory3);
+        panelDirectories.add(panelOfDirectory4);
+        panelDirectories.add(panelOfDirectory5);
          
         GenericExtFilter filter = new GenericExtFilter(array);
         
@@ -106,37 +100,35 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                  
                 chooser1.addActionListener(new ActionListener() {
-
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                        
-                        file1 = chooser1.getSelectedFile();
-                        jpn1.removeAll();
-                        jpn1.setLayout(new GridLayout(0,2));
-                        parentFrame.getImageEditor().getPanelForIcons().removeAll();
-                        parentFrame.getImageEditor().getPanelForIcons().add(jpn1);
-                        jpn1.setSize(jpn1.getParent().getSize());
-                        jpn1.setVisible(true);
-                        
-                        File[] images = file1.listFiles(filter);
-                        
-                        for (File image : images) {
-                            imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                            jp.setSize(250,250);
-                            jpn1.add(jp);
-                            jp.setVisible(true);
-                        }
-                        JScrollPane scrollpane1 = new JScrollPane(jpn1);
-                        scrollpane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                        scrollpane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                        scrollpane1.setBounds(30, 50, jpn1.getParent().getWidth(), 20000);
-                        parentFrame.getImageEditor().getPanelForIcons().add(scrollpane1);
-                        parentFrame.getImageEditor().getPanelForIcons().updateUI();
-                        
+                            parentFrame.getImageEditor().getJpn1().removeAll();
+                            file1 = chooser1.getSelectedFile();
+                            JPanel jpn1child = new JPanel();
+                            jpn1child.setLayout(new GridLayout(0,2));
+                                
+                            File[] images = file1.listFiles(filter);
+                            for (File image : images) {
+                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+                                jp.setSize(250,250);
+                                jpn1child.add(jp);
+                                jp.setVisible(true);
+                            }
+                                
+                            JScrollPane scrollpane1 = new JScrollPane(jpn1child);
+                            scrollpane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollpane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollpane1.setBounds(30, 50, parentFrame.getImageEditor().getJpn1().getParent().getWidth(), 20000);
+                            parentFrame.getImageEditor().getJpn1().setLayout(new BorderLayout());
+                            parentFrame.getImageEditor().getJpn1().add(scrollpane1 , BorderLayout.CENTER);
+                            parentFrame.getImageEditor().getJpn1().repaint();
+                            parentFrame.getImageEditor().getJpn1().revalidate();
+                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
                         }
                     }
                 });
+                
                 chooser1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser1.showOpenDialog(SeconPanelImageBrowse.this);
                 if(option == JFileChooser.APPROVE_OPTION){
@@ -164,6 +156,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 //setting file to null , clear file(directory that we deleted
                 file1 = null;
+                parentFrame.getImageEditor().getJpn1().removeAll();
+                parentFrame.getImageEditor().getJpn1().repaint();
                 displayDirName1.setText(null);
                 if(count == 1){
                     panelOfDirectory1.setVisible(false);
@@ -186,7 +180,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     displayDirName1.setText(displayDirName2.getText());
                     displayDirName2.setText(displayDirName3.getText());
                     displayDirName3.setText(displayDirName4.getText());
-                     displayDirName4.setText(null);
+                    displayDirName4.setText(null);
                     panelOfDirectory4.setVisible(false);
                     count--;
                 }
@@ -221,37 +215,31 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             JButton buttonOpen2 = new JButton();
             buttonOpen2.addActionListener((ActionEvent e) -> {
                chooser2.addActionListener(new ActionListener() {
-
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
+                            parentFrame.getImageEditor().getJpn2().removeAll();
                             file2 = chooser2.getSelectedFile();
-                        //parentFrame  stores mainFrame parent
-                        //curent file we are working on - file1
-                        //Adding a panel to store icons as a grid view
-                        jpn2.removeAll();
-                        jpn2.setLayout(new GridLayout(0,2));
-                        parentFrame.getImageEditor().getPanelForIcons().removeAll();
-                        parentFrame.getImageEditor().getPanelForIcons().add(jpn2);
-                        jpn2.setSize(jpn2.getParent().getSize());
-                        jpn2.setVisible(true);
-                        
-                        File[] images = file2.listFiles(filter);
-                        
-                        for (File image : images) {
-                            imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                            jp.setSize(250,250);
-                            jpn2.add(jp);
-                            jp.setVisible(true);
-                        }
-                        JScrollPane scrollpane2 = new JScrollPane(jpn2);
-                        scrollpane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                        scrollpane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                        scrollpane2.setBounds(30, 50, jpn2.getParent().getWidth(), 20000);
-                        parentFrame.getImageEditor().getPanelForIcons().add(scrollpane2);
-                        //.getImageEditor().getPanelForIcons().repaint();
-                        parentFrame.getImageEditor().getPanelForIcons().updateUI();
-                        
+                            JPanel jpnchild = new JPanel();
+                            jpnchild.setLayout(new GridLayout(0,2));
+                                
+                            File[] images = file2.listFiles(filter);
+                            for (File image : images) {
+                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+                                jp.setSize(250,250);
+                                jpnchild.add(jp);
+                                jp.setVisible(true);
+                            }
+                                
+                            JScrollPane scrollpane = new JScrollPane(jpnchild);
+                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn2().getParent().getWidth(), 20000);
+                            parentFrame.getImageEditor().getJpn2().setLayout(new BorderLayout());
+                            parentFrame.getImageEditor().getJpn2().add(scrollpane , BorderLayout.CENTER);
+                            parentFrame.getImageEditor().getJpn2().repaint();
+                            parentFrame.getImageEditor().getJpn2().revalidate();
+                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
                         }
                     }
                 });
@@ -280,6 +268,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
              buttonRemove2.addActionListener((ActionEvent e) -> {
                  //setting file to null , clear file(directory that we deleted)
                 file2 = null;
+                parentFrame.getImageEditor().getJpn2().removeAll();
+                parentFrame.getImageEditor().getJpn2().repaint();
                 if(count == 2){
                      panelOfDirectory2.setVisible(false);
                      displayDirName2.setText(null);
@@ -329,7 +319,35 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             panelOfDirectory3.setLayout(new BorderLayout());
             JButton buttonOpen3 = new JButton();
             buttonOpen3.addActionListener((ActionEvent e) -> {
-                JFileChooser chooser3 = new JFileChooser();
+                chooser3.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(e.getActionCommand()!="CancelSelection"){
+                            parentFrame.getImageEditor().getJpn3().removeAll();
+                            file3 = chooser3.getSelectedFile();
+                            JPanel jpnchild = new JPanel();
+                            jpnchild.setLayout(new GridLayout(0,2));
+                                
+                            File[] images = file2.listFiles(filter);
+                            for (File image : images) {
+                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+                                jp.setSize(250,250);
+                                jpnchild.add(jp);
+                                jp.setVisible(true);
+                            }
+                                
+                            JScrollPane scrollpane = new JScrollPane(jpnchild);
+                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn3().getParent().getWidth(), 20000);
+                            parentFrame.getImageEditor().getJpn3().setLayout(new BorderLayout());
+                            parentFrame.getImageEditor().getJpn3().add(scrollpane , BorderLayout.CENTER);
+                            parentFrame.getImageEditor().getJpn3().repaint();
+                            parentFrame.getImageEditor().getJpn3().revalidate();
+                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                        }
+                    }
+                });
                 chooser3.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser3.showOpenDialog(SeconPanelImageBrowse.this);
 
@@ -356,6 +374,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                buttonRemove3.addActionListener((ActionEvent e) -> {
                    //setting file to null , clear file(directory that we deleted)
                    file3 = null;
+                   parentFrame.getImageEditor().getJpn3().removeAll();
+                   parentFrame.getImageEditor().getJpn3().repaint();
                  if(count == 3){
                      displayDirName3.setText(null);
                      panelOfDirectory3.setVisible(false);
@@ -395,7 +415,35 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             panelOfDirectory4.setLayout(new BorderLayout());
             JButton buttonOpen4 = new JButton();
             buttonOpen4.addActionListener((ActionEvent e) -> {
-                JFileChooser chooser4 = new JFileChooser();
+                chooser4.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(e.getActionCommand()!="CancelSelection"){
+                            parentFrame.getImageEditor().getJpn4().removeAll();
+                            file4 = chooser4.getSelectedFile();
+                            JPanel jpnchild = new JPanel();
+                            jpnchild.setLayout(new GridLayout(0,2));
+                                
+                            File[] images = file4.listFiles(filter);
+                            for (File image : images) {
+                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+                                jp.setSize(250,250);
+                                jpnchild.add(jp);
+                                jp.setVisible(true);
+                            }
+                                
+                            JScrollPane scrollpane = new JScrollPane(jpnchild);
+                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn4().getParent().getWidth(), 20000);
+                            parentFrame.getImageEditor().getJpn4().setLayout(new BorderLayout());
+                            parentFrame.getImageEditor().getJpn4().add(scrollpane , BorderLayout.CENTER);
+                            parentFrame.getImageEditor().getJpn4().repaint();
+                            parentFrame.getImageEditor().getJpn4().revalidate();
+                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                        }
+                    }
+                });
                 chooser4.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser4.showOpenDialog(SeconPanelImageBrowse.this);
                 if(option ==JFileChooser.APPROVE_OPTION){
@@ -421,6 +469,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                  buttonRemove4.addActionListener((ActionEvent e) -> {
                  //setting file to null , clear file(directory that we deleted)
                  file4 = null; 
+                 parentFrame.getImageEditor().getJpn4().removeAll();
+                 parentFrame.getImageEditor().getJpn4().repaint();
                  if(count == 4){
                         displayDirName4.setText(null);
                      panelOfDirectory4.setVisible(false);
@@ -453,7 +503,35 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             panelOfDirectory5.setLayout(new BorderLayout());
             JButton buttonOpen5 = new JButton();
             buttonOpen5.addActionListener((ActionEvent e) -> {
-                JFileChooser chooser5 = new JFileChooser();
+                chooser4.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(e.getActionCommand()!="CancelSelection"){
+                            parentFrame.getImageEditor().getJpn5().removeAll();
+                            file5 = chooser5.getSelectedFile();
+                            JPanel jpnchild = new JPanel();
+                            jpnchild.setLayout(new GridLayout(0,2));
+                                
+                            File[] images = file5.listFiles(filter);
+                            for (File image : images) {
+                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+                                jp.setSize(250,250);
+                                jpnchild.add(jp);
+                                jp.setVisible(true);
+                            }
+                                
+                            JScrollPane scrollpane = new JScrollPane(jpnchild);
+                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn5().getParent().getWidth(), 20000);
+                            parentFrame.getImageEditor().getJpn5().setLayout(new BorderLayout());
+                            parentFrame.getImageEditor().getJpn5().add(scrollpane , BorderLayout.CENTER);
+                            parentFrame.getImageEditor().getJpn5().repaint();
+                            parentFrame.getImageEditor().getJpn5().revalidate();
+                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                        }
+                    }
+                });
                 chooser5.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int option = chooser5.showOpenDialog(SeconPanelImageBrowse.this);
                 if(option ==JFileChooser.APPROVE_OPTION){
@@ -479,6 +557,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
               buttonRemove5.addActionListener((ActionEvent e) -> {
                   //setting file to null , clear file(directory that we deleted)
                   file5 = null;
+                  parentFrame.getImageEditor().getJpn5().removeAll();
+                  parentFrame.getImageEditor().getJpn5().repaint();
                  if(count == 5){
                      displayDirName5.setText(null);
                      panelOfDirectory5.setVisible(false);
@@ -500,20 +580,6 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
               
     }
     
-    
-    
-    public File[] getAllDirectories(){
-        File[] directories = {file1 , file2 , file3 , file4 , file5};
-        return directories;
-    }
-    
-     public File getFile1(){
-             return file1;
-        }
-    
-    
-   
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -649,22 +715,34 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         file3 = null;
         file4 = null;
         file5 = null;
-    //Clear text fields
-    displayDirName1.setText(null);
-    displayDirName2.setText(null);
-    displayDirName3.setText(null);
-    displayDirName4.setText(null);
-    displayDirName5.setText(null);
-    count = 0;
-    //AddNewDirectory.setVisible(true);
-    AddNewDirectory.setEnabled(true);
-    panelOfDirectory1.setVisible(false);
-    panelOfDirectory2.setVisible(false);
-    panelOfDirectory3.setVisible(false);
-    panelOfDirectory4.setVisible(false);panelOfDirectory5.setVisible(false);
-    panelOfDirectory5.setVisible(false);
-    //Clear Choosers
-    
+        //Clear text fields
+        displayDirName1.setText(null);
+        displayDirName2.setText(null);
+        displayDirName3.setText(null);
+        displayDirName4.setText(null);
+        displayDirName5.setText(null);
+        count = 0;
+        //AddNewDirectory.setVisible(true);
+        AddNewDirectory.setEnabled(true);
+        panelOfDirectory1.setVisible(false);
+        panelOfDirectory2.setVisible(false);
+        panelOfDirectory3.setVisible(false);
+        panelOfDirectory4.setVisible(false);
+        panelOfDirectory5.setVisible(false);
+        panelOfDirectory5.setVisible(false);
+        //Clear panels with images icons
+        parentFrame.getImageEditor().getJpn1().removeAll();
+        parentFrame.getImageEditor().getJpn2().removeAll();
+        parentFrame.getImageEditor().getJpn3().removeAll();
+        parentFrame.getImageEditor().getJpn4().removeAll();
+        parentFrame.getImageEditor().getJpn5().removeAll();
+        
+        parentFrame.getImageEditor().getJpn1().repaint();
+        parentFrame.getImageEditor().getJpn2().repaint();
+        parentFrame.getImageEditor().getJpn3().repaint();
+        parentFrame.getImageEditor().getJpn4().repaint();
+        parentFrame.getImageEditor().getJpn5().repaint();
+        
     }//GEN-LAST:event_buttonRemoveAllActionPerformed
 
     public void setParentFrame(mainFrame mainframe){
@@ -676,10 +754,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
     }
     
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
-        //this.getParentFrame().revalidate();
-        //   this.getParentFrame().repaint();
-        // this.getParentFrame().constructComboBox(this.getAllDirectories());
-        this.setVisible(false);
+         this.setVisible(false);
     }//GEN-LAST:event_buttonSaveActionPerformed
 
 
