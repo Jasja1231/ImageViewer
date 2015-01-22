@@ -96,7 +96,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         panelOfDirectory1.setLayout(new BorderLayout());
         JButton buttonOpen1 = new JButton();
             buttonOpen1.addActionListener(new ActionListener() {
-
+           //action after choosing Browse
             public void actionPerformed(ActionEvent e) {
                  
                 chooser1.addActionListener(new ActionListener() {
