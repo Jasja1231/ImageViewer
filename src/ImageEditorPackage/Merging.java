@@ -6,25 +6,11 @@
 package ImageEditorPackage;
 
 import java.awt.Image;
-<<<<<<< HEAD
-=======
-import java.awt.List;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
->>>>>>> origin/master
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import javax.imageio.ImageIO;
-=======
-import java.util.Arrays;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
->>>>>>> origin/master
 
 /**
  *
@@ -40,12 +26,9 @@ public class Merging extends imagePanel {
     
     
     public Merging() {
-<<<<<<< HEAD
         imagesSelected = geimagesSelectedList();
         int i=0;
         i++;
-=======
->>>>>>> origin/master
     }
     public void merge(int type) throws IOException
     {
