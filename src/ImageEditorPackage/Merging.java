@@ -26,9 +26,6 @@ public class Merging extends imagePanel {
     
     
     public Merging() {
-        imagesSelected = geimagesSelectedList();
-        int i=0;
-        i++;
     }
     public void merge(int type) throws IOException
     {
