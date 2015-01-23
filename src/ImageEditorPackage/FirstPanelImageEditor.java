@@ -5,10 +5,9 @@
  */
 package ImageEditorPackage;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -19,19 +18,20 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
     /**
      * Creates new form FirstPanelImageEditor
      */
+    public ArrayList<imagePanel> currentpanel = new ArrayList<>();
     
     private  mainFrame parentFrame = (mainFrame) this.getParent();
     
     public FirstPanelImageEditor() {
         initComponents();
-        
+                
     }
 
     public JPanel getPanelImageEditor(){
         return panelImageEditor;
     }
     
-     public JPanel getPanelForIcons(){
+    public JPanel getPanelForIcons(){
         return panelForIcons;
     }
       
@@ -218,28 +218,36 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         add(panelImageEditor, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void buttonDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir1ActionPerformed
         CardLayout card = (CardLayout) panelForIcons.getLayout();
+        currentpanel = parentFrame.getImageBrowser().getImagePanel1();
         card.show(panelForIcons, "jpn1");
     }//GEN-LAST:event_buttonDir1ActionPerformed
 
     private void buttonDir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir4ActionPerformed
         CardLayout card = (CardLayout) panelForIcons.getLayout();
+        currentpanel = parentFrame.getImageBrowser().getImagePanel4();
         card.show(panelForIcons, "jpn4");    
     }//GEN-LAST:event_buttonDir4ActionPerformed
 
     private void buttonDir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir2ActionPerformed
         CardLayout card = (CardLayout) panelForIcons.getLayout();
+        currentpanel = parentFrame.getImageBrowser().getImagePanel2();
         card.show(panelForIcons, "jpn2");
     }//GEN-LAST:event_buttonDir2ActionPerformed
 
     private void buttonDir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir3ActionPerformed
         CardLayout card = (CardLayout) panelForIcons.getLayout();
+        currentpanel = parentFrame.getImageBrowser().getImagePanel3();
         card.show(panelForIcons, "jpn3");
     }//GEN-LAST:event_buttonDir3ActionPerformed
 
     private void buttonDir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir5ActionPerformed
         CardLayout card = (CardLayout) panelForIcons.getLayout();
+        currentpanel = parentFrame.getImageBrowser().getImagePanel5();
         card.show(panelForIcons, "jpn5");
     }//GEN-LAST:event_buttonDir5ActionPerformed
 
