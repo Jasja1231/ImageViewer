@@ -222,32 +222,57 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
     
     
     private void buttonDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir1ActionPerformed
+        try{
+            currentpanel = parentFrame.getImageBrowser().getImagePanel1();
+        }
+        catch(Exception e){
+        
+        }
         CardLayout card = (CardLayout) panelForIcons.getLayout();
-        currentpanel = parentFrame.getImageBrowser().getImagePanel1();
         card.show(panelForIcons, "jpn1");
     }//GEN-LAST:event_buttonDir1ActionPerformed
 
     private void buttonDir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir4ActionPerformed
+        try{
+            currentpanel = parentFrame.getImageBrowser().getImagePanel4();
+        }
+        catch(Exception e){
+        
+        }
         CardLayout card = (CardLayout) panelForIcons.getLayout();
-        currentpanel = parentFrame.getImageBrowser().getImagePanel4();
         card.show(panelForIcons, "jpn4");    
     }//GEN-LAST:event_buttonDir4ActionPerformed
 
     private void buttonDir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir2ActionPerformed
+        try{
+           currentpanel = parentFrame.getImageBrowser().getImagePanel2(); 
+        }
+        catch(Exception e){
+        
+        }
         CardLayout card = (CardLayout) panelForIcons.getLayout();
-        currentpanel = parentFrame.getImageBrowser().getImagePanel2();
         card.show(panelForIcons, "jpn2");
     }//GEN-LAST:event_buttonDir2ActionPerformed
 
     private void buttonDir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir3ActionPerformed
+        try{
+            currentpanel = parentFrame.getImageBrowser().getImagePanel3();
+        }
+        catch(Exception e){
+        
+        }
         CardLayout card = (CardLayout) panelForIcons.getLayout();
-        currentpanel = parentFrame.getImageBrowser().getImagePanel3();
         card.show(panelForIcons, "jpn3");
     }//GEN-LAST:event_buttonDir3ActionPerformed
 
     private void buttonDir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDir5ActionPerformed
+        try{
+            currentpanel = parentFrame.getImageBrowser().getImagePanel5();
+        }
+        catch(Exception e){
+        
+        }
         CardLayout card = (CardLayout) panelForIcons.getLayout();
-        currentpanel = parentFrame.getImageBrowser().getImagePanel5();
         card.show(panelForIcons, "jpn5");
     }//GEN-LAST:event_buttonDir5ActionPerformed
 
