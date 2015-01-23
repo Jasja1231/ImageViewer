@@ -13,6 +13,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -28,8 +29,13 @@ import javax.swing.JTextField;
 public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
     
-    //panelAddDirectories.setMinimumSize()
-    //this.setMinimumSize(new Dimension(770, 500));
+    private ArrayList<imagePanel> imagepanel1 = new ArrayList<>();
+    private ArrayList<imagePanel> imagepanel2 = new ArrayList<>();
+    private ArrayList<imagePanel> imagepanel3 = new ArrayList<>();
+    private ArrayList<imagePanel> imagepanel4 = new ArrayList<>();
+    private ArrayList<imagePanel> imagepanel5 = new ArrayList<>();
+    
+    
     
     private mainFrame parentFrame = (mainFrame) this.getParent();
     
@@ -103,7 +109,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser1);
+                            fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser1 , imagepanel1);
                          }
                     }
                 });
@@ -197,7 +203,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                           fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser2);
+                           fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser2 , imagepanel2);
                         }
                     }
                 });
@@ -281,7 +287,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                           fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser3);
+                           fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser3 , imagepanel3);
                         }
                     }
                 });
@@ -356,7 +362,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser4);
+                            fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser4 , imagepanel4);
                         }
                     }
                 });
@@ -419,11 +425,11 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             panelOfDirectory5.setLayout(new BorderLayout());
             JButton buttonOpen5 = new JButton();
             buttonOpen5.addActionListener((ActionEvent e) -> {
-                chooser4.addActionListener(new ActionListener() {
+                chooser5.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            fullFillPanel(parentFrame.getImageEditor().getJpn5(),file5, chooser5);
+                            fullFillPanel(parentFrame.getImageEditor().getJpn5(),file5, chooser5 , imagepanel5);
                         }
                     }
                 });
@@ -640,7 +646,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonRemoveAllActionPerformed
 
-    public void fullFillPanel(JPanel JpnN , File file  , JFileChooser chooser){
+    public void fullFillPanel(JPanel JpnN , File file  , JFileChooser chooser , ArrayList<imagePanel> imagepanel){
         GenericExtFilter filter = new GenericExtFilter(array);
         JpnN.removeAll();
         file = chooser.getSelectedFile();
@@ -652,6 +658,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         for (File image : images) {
             imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
             jp.setSize(250,250);
+            imagepanel.add(jp);
             jpn1child.add(jp);
             jp.setVisible(true);
         }
@@ -673,6 +680,26 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
      
     public void setParentFrame(mainFrame mainframe){
         parentFrame = mainframe;
+    }
+    
+    public ArrayList<imagePanel> getImagePanel1(){
+        return imagepanel1;
+    }
+    
+    public ArrayList<imagePanel> getImagePanel2(){
+         return imagepanel2;
+    }
+    
+    public ArrayList<imagePanel> getImagePanel3(){
+         return imagepanel3;
+    }
+    
+    public ArrayList<imagePanel> getImagePanel4(){
+        return imagepanel4;
+    }
+    
+    public ArrayList<imagePanel> getImagePanel5(){
+        return imagepanel5;
     }
     
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
