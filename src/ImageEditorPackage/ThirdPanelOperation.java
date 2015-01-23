@@ -5,6 +5,8 @@
  */
 package ImageEditorPackage;
 
+import javax.swing.ButtonGroup;
+
 /**
  *
  * @author Jaryna
@@ -17,8 +19,11 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     public ThirdPanelOperation() {
         initComponents();
+        ButtonGroup group  = new ButtonGroup(); 
         
-       
+        group.add(jRadioButton1);
+        group.add(jRadioButton2);
+        group.add(jRadioButton3);
     }
 
     /**

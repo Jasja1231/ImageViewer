@@ -87,9 +87,9 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         panelDirectories.add(panelOfDirectory4);
         panelDirectories.add(panelOfDirectory5);
          
-        GenericExtFilter filter = new GenericExtFilter(array);
         
-       
+        
+       GenericExtFilter filter  = new GenericExtFilter(array);
         
         //Filling panelOfDirecrory11st directory filling 
         panelOfDirectory1.setVisible(false);
@@ -103,29 +103,8 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            parentFrame.getImageEditor().getJpn1().removeAll();
-                            file1 = chooser1.getSelectedFile();
-                            JPanel jpn1child = new JPanel();
-                            jpn1child.setLayout(new GridLayout(0,2));
-                                
-                            File[] images = file1.listFiles(filter);
-                            for (File image : images) {
-                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                                jp.setSize(250,250);
-                                jpn1child.add(jp);
-                                jp.setVisible(true);
-                            }
-                                
-                            JScrollPane scrollpane1 = new JScrollPane(jpn1child);
-                            scrollpane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollpane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                            scrollpane1.setBounds(30, 50, parentFrame.getImageEditor().getJpn1().getParent().getWidth(), 20000);
-                            parentFrame.getImageEditor().getJpn1().setLayout(new BorderLayout());
-                            parentFrame.getImageEditor().getJpn1().add(scrollpane1 , BorderLayout.CENTER);
-                            parentFrame.getImageEditor().getJpn1().repaint();
-                            parentFrame.getImageEditor().getJpn1().revalidate();
-                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
-                        }
+                            fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser1);
+                         }
                     }
                 });
                 
@@ -218,28 +197,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            parentFrame.getImageEditor().getJpn2().removeAll();
-                            file2 = chooser2.getSelectedFile();
-                            JPanel jpnchild = new JPanel();
-                            jpnchild.setLayout(new GridLayout(0,2));
-                                
-                            File[] images = file2.listFiles(filter);
-                            for (File image : images) {
-                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                                jp.setSize(250,250);
-                                jpnchild.add(jp);
-                                jp.setVisible(true);
-                            }
-                                
-                            JScrollPane scrollpane = new JScrollPane(jpnchild);
-                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn2().getParent().getWidth(), 20000);
-                            parentFrame.getImageEditor().getJpn2().setLayout(new BorderLayout());
-                            parentFrame.getImageEditor().getJpn2().add(scrollpane , BorderLayout.CENTER);
-                            parentFrame.getImageEditor().getJpn2().repaint();
-                            parentFrame.getImageEditor().getJpn2().revalidate();
-                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                           fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser2);
                         }
                     }
                 });
@@ -323,28 +281,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            parentFrame.getImageEditor().getJpn3().removeAll();
-                            file3 = chooser3.getSelectedFile();
-                            JPanel jpnchild = new JPanel();
-                            jpnchild.setLayout(new GridLayout(0,2));
-                                
-                            File[] images = file2.listFiles(filter);
-                            for (File image : images) {
-                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                                jp.setSize(250,250);
-                                jpnchild.add(jp);
-                                jp.setVisible(true);
-                            }
-                                
-                            JScrollPane scrollpane = new JScrollPane(jpnchild);
-                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn3().getParent().getWidth(), 20000);
-                            parentFrame.getImageEditor().getJpn3().setLayout(new BorderLayout());
-                            parentFrame.getImageEditor().getJpn3().add(scrollpane , BorderLayout.CENTER);
-                            parentFrame.getImageEditor().getJpn3().repaint();
-                            parentFrame.getImageEditor().getJpn3().revalidate();
-                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                           fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser3);
                         }
                     }
                 });
@@ -419,28 +356,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            parentFrame.getImageEditor().getJpn4().removeAll();
-                            file4 = chooser4.getSelectedFile();
-                            JPanel jpnchild = new JPanel();
-                            jpnchild.setLayout(new GridLayout(0,2));
-                                
-                            File[] images = file4.listFiles(filter);
-                            for (File image : images) {
-                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                                jp.setSize(250,250);
-                                jpnchild.add(jp);
-                                jp.setVisible(true);
-                            }
-                                
-                            JScrollPane scrollpane = new JScrollPane(jpnchild);
-                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn4().getParent().getWidth(), 20000);
-                            parentFrame.getImageEditor().getJpn4().setLayout(new BorderLayout());
-                            parentFrame.getImageEditor().getJpn4().add(scrollpane , BorderLayout.CENTER);
-                            parentFrame.getImageEditor().getJpn4().repaint();
-                            parentFrame.getImageEditor().getJpn4().revalidate();
-                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                            fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser4);
                         }
                     }
                 });
@@ -507,28 +423,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(e.getActionCommand()!="CancelSelection"){
-                            parentFrame.getImageEditor().getJpn5().removeAll();
-                            file5 = chooser5.getSelectedFile();
-                            JPanel jpnchild = new JPanel();
-                            jpnchild.setLayout(new GridLayout(0,2));
-                                
-                            File[] images = file5.listFiles(filter);
-                            for (File image : images) {
-                                imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
-                                jp.setSize(250,250);
-                                jpnchild.add(jp);
-                                jp.setVisible(true);
-                            }
-                                
-                            JScrollPane scrollpane = new JScrollPane(jpnchild);
-                            scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                            scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn5().getParent().getWidth(), 20000);
-                            parentFrame.getImageEditor().getJpn5().setLayout(new BorderLayout());
-                            parentFrame.getImageEditor().getJpn5().add(scrollpane , BorderLayout.CENTER);
-                            parentFrame.getImageEditor().getJpn5().repaint();
-                            parentFrame.getImageEditor().getJpn5().revalidate();
-                            parentFrame.getImageEditor().getPanelForIcons().updateUI();
+                            fullFillPanel(parentFrame.getImageEditor().getJpn5(),file5, chooser5);
                         }
                     }
                 });
@@ -745,12 +640,39 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonRemoveAllActionPerformed
 
-    public void setParentFrame(mainFrame mainframe){
-        parentFrame = mainframe;    
+    public void fullFillPanel(JPanel JpnN , File file  , JFileChooser chooser){
+        GenericExtFilter filter = new GenericExtFilter(array);
+        JpnN.removeAll();
+        file = chooser.getSelectedFile();
+        
+        JPanel jpn1child = new JPanel();
+        jpn1child.setLayout(new GridLayout(0,2));
+                                
+        File[] images = file.listFiles(filter);
+        for (File image : images) {
+            imagePanel jp = new imagePanel(new ImageIcon(image.getPath()).getImage() , image);
+            jp.setSize(250,250);
+            jpn1child.add(jp);
+            jp.setVisible(true);
+        }
+                                
+        JScrollPane scrollpane = new JScrollPane(jpn1child);
+        scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getJpn1().getParent().getWidth(), 20000);
+        JpnN.setLayout(new BorderLayout());
+        JpnN.add(scrollpane , BorderLayout.CENTER);
+        JpnN.repaint();
+        JpnN.revalidate();
+        parentFrame.getImageEditor().getPanelForIcons().updateUI();
     }
     
      public mainFrame getParentFrame(){
         return parentFrame;    
+    }
+     
+    public void setParentFrame(mainFrame mainframe){
+        parentFrame = mainframe;
     }
     
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
