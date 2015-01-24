@@ -88,6 +88,11 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         );
 
         buttonMergeSelectedPictures.setText("Merge Pictures");
+        buttonMergeSelectedPictures.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMergeSelectedPicturesActionPerformed(evt);
+            }
+        });
 
         buttonMergeDirectories.setText("Merge Direcctories");
 
@@ -182,6 +187,12 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonMergeSelectedPicturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeSelectedPicturesActionPerformed
+        // TODO add your handling code here:
+        Merging Test = new Merging();
+        
+    }//GEN-LAST:event_buttonMergeSelectedPicturesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
