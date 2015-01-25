@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
+
 /**
  *
  * @author Bob
@@ -23,7 +24,7 @@ public class Merging extends imagePanel {
     public BufferedImage img1;
     public BufferedImage img2;
     public BufferedImage result;
-    
+    public Image result_image;
     
     
     public Merging() {
@@ -80,6 +81,8 @@ public class Merging extends imagePanel {
         }
         result = new BufferedImage(fHeight, fWidth,BufferedImage.TYPE_INT_RGB);
         result = prev;     
+        
+        result_image = result.getScaledInstance((int)result.getWidth()-4, (int)result.getHeight(),BufferedImage.TYPE_INT_RGB);
     }
     
     @Override

@@ -63,35 +63,6 @@ public class imagePanel extends javax.swing.JPanel {
         //this.repaint();
     }
     
-    //copy Constructor for imagePanel
-    imagePanel(BufferedImage image , File img) {
-        fileOfImage = img;
-        this.setSize(250, 250);
-        BufferedImage tmp = null;
-        tmp = (BufferedImage) image.getScaledInstance(250, 250 , Image.SCALE_SMOOTH);
-        ImageIcon icon = new ImageIcon(tmp);
-        JLabel picLabel = new JLabel(icon);
-        JCheckBox checkbox = new JCheckBox();
-        checkbox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(selected == false){
-                    selected = true;
-                    }
-                else if(selected == true){
-                    selected = false;
-                    }
-            }
-        });
-        checkbox.setVisible(true);
-        
-        picLabel.add(checkbox);
-        
-        picLabel.setSize(this.getSize());
-        this.add(picLabel);
-        this.add(checkbox);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

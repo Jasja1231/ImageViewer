@@ -5,9 +5,17 @@
  */
 package ImageEditorPackage;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -18,6 +26,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     /**
      * Creates new form ThirdPanelOperation
      */
+    //array for Generic Filter of files that should be in  our chosen directory
+    String[] array = {".jpg",".png", ".jpeg"," .tiff",".tif"," .bmp" ,".JPG" };
     
     private   mainFrame parentFrame = (mainFrame) this.getParent();
     
@@ -27,6 +37,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     ButtonGroup group  = new ButtonGroup();
     String selectedButton = "AND";
+    
+    String selectedSizeType = "ErlargeSmaller";
+    //0 - ErlargeSmaller 1 - Shrink Bigger 2- Center(put in the middle) 3 - CutOut
+    public int sizeType = 0 ; 
     
     public ThirdPanelOperation() {
         initComponents();
@@ -267,11 +281,58 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
             catch(Exception e){}
         }
-     
+        
+        fullFillPanelwithOneMergedImage(parentFrame.getImageEditor().getPanelForResult() , Test.result_image );
     }//GEN-LAST:event_buttonMergeSelectedPicturesActionPerformed
 
+    public void fullFillPanelwithOneMergedImage(JPanel JpnN , Image image ){
+        GenericExtFilter filter = new GenericExtFilter(array);
+        //JpnN.removeAll();
+        
+        JpnN.setBackground(java.awt.Color.ORANGE);
+        JPanel jpn1child = new JPanel();
+        jpn1child.setLayout(new GridLayout(0,2));
+        
+        if(image!=null){
+            imagePanel jp = new imagePanel(image  , null);
+            jp.setSize(300,300);
+            jpn1child.add(jp);
+            jp.setVisible(true);
+        }
+        
+                                
+        JScrollPane scrollpane = new JScrollPane(jpn1child);
+        scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getPanelForResult().getParent().getWidth(), 20000);
+        JpnN.setLayout(new BorderLayout());
+        JpnN.add(scrollpane , BorderLayout.CENTER);
+        JpnN.repaint();
+        JpnN.revalidate();
+        parentFrame.getImageEditor().getPanelForIcons().updateUI();
+    }
+    
+    
+    
+    
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here
+       //0 - ErlargeSmaller 1 - Shrink Bigger 2- Center(put in the middle) 3 - CutOut
+        selectedSizeType =jComboBox1.getSelectedItem().toString();
+        switch (selectedSizeType) {
+            case "Center":
+                sizeType=2;
+                break;
+            case "Enlarge smaller":
+                sizeType=0;
+                break;
+            case "Shrink bigger":     
+                sizeType=1;
+                break;
+            case "Center and cut":
+                sizeType=3;
+                break;
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
