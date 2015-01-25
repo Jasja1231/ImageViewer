@@ -73,7 +73,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -98,7 +98,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -123,7 +123,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -149,7 +149,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -175,7 +175,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="520" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="538" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -189,44 +189,11 @@
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonDir1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonDir2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonDir3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonDir4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonDir5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="155" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonDir1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonDir2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonDir3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonDir4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonDir5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Component class="javax.swing.JButton" name="buttonDir1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dir 1"/>
+                <Property name="text" type="java.lang.String" value="     Dir 1     "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDir1ActionPerformed"/>
@@ -234,7 +201,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="buttonDir2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dir 2"/>
+                <Property name="text" type="java.lang.String" value="     Dir 2    "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDir2ActionPerformed"/>
@@ -242,7 +209,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="buttonDir3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dir 3"/>
+                <Property name="text" type="java.lang.String" value="     Dir 3     "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDir3ActionPerformed"/>
@@ -250,7 +217,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="buttonDir4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dir 4"/>
+                <Property name="text" type="java.lang.String" value="     Dir 4     "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDir4ActionPerformed"/>
@@ -258,7 +225,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="buttonDir5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dir 5"/>
+                <Property name="text" type="java.lang.String" value="     Dir 5     "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDir5ActionPerformed"/>

@@ -79,7 +79,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
         jpn1Layout.setVerticalGroup(
             jpn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         panelForIcons.add(jpn1, "jpn1");
@@ -94,7 +94,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
         jpn2Layout.setVerticalGroup(
             jpn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         panelForIcons.add(jpn2, "jpn2");
@@ -109,7 +109,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
         jpn3Layout.setVerticalGroup(
             jpn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         panelForIcons.add(jpn3, "jpn3");
@@ -125,7 +125,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
         jpn4Layout.setVerticalGroup(
             jpn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         panelForIcons.add(jpn4, "jpn4");
@@ -141,77 +141,52 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
         jpn5Layout.setVerticalGroup(
             jpn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         panelForIcons.add(jpn5, "jpn5");
 
         panelImageEditor.add(panelForIcons, java.awt.BorderLayout.CENTER);
 
-        buttonDir1.setText("Dir 1");
+        buttonDir1.setText("     Dir 1     ");
         buttonDir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDir1ActionPerformed(evt);
             }
         });
+        panelForDirButtons.add(buttonDir1);
 
-        buttonDir2.setText("Dir 2");
+        buttonDir2.setText("     Dir 2    ");
         buttonDir2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDir2ActionPerformed(evt);
             }
         });
+        panelForDirButtons.add(buttonDir2);
 
-        buttonDir3.setText("Dir 3");
+        buttonDir3.setText("     Dir 3     ");
         buttonDir3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDir3ActionPerformed(evt);
             }
         });
+        panelForDirButtons.add(buttonDir3);
 
-        buttonDir4.setText("Dir 4");
+        buttonDir4.setText("     Dir 4     ");
         buttonDir4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDir4ActionPerformed(evt);
             }
         });
+        panelForDirButtons.add(buttonDir4);
 
-        buttonDir5.setText("Dir 5");
+        buttonDir5.setText("     Dir 5     ");
         buttonDir5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDir5ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelForDirButtonsLayout = new javax.swing.GroupLayout(panelForDirButtons);
-        panelForDirButtons.setLayout(panelForDirButtonsLayout);
-        panelForDirButtonsLayout.setHorizontalGroup(
-            panelForDirButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelForDirButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonDir1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonDir2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonDir3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonDir4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonDir5)
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
-        panelForDirButtonsLayout.setVerticalGroup(
-            panelForDirButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelForDirButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelForDirButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonDir1)
-                    .addComponent(buttonDir2)
-                    .addComponent(buttonDir3)
-                    .addComponent(buttonDir4)
-                    .addComponent(buttonDir5))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        panelForDirButtons.add(buttonDir5);
 
         panelImageEditor.add(panelForDirButtons, java.awt.BorderLayout.PAGE_START);
 
