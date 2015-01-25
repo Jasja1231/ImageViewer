@@ -323,8 +323,6 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
 
     private void buttonMergeSelectedPicturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeSelectedPicturesActionPerformed
         
-        
-        
         ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
         try{
             currentSelectedImagePanels = parentFrame.getImageEditor().getCurrentPanelSetOfImages();
@@ -355,7 +353,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         
         if(Test.imagesSelected.isEmpty() == true){
             //custom title, error icon
-            JOptionPane.showMessageDialog(parentFrame,"Choose image before you merge","" ,JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(parentFrame,"Choose image before you merge and click directory button on the top of the Image Editor to update you choice","" ,JOptionPane.ERROR_MESSAGE);
         }
         else{
         //Merging operation in action
@@ -368,6 +366,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         fullFillPanelwithOneMergedImage(parentFrame.getImageEditor().getPanelForResult() , Test.result_image );
     }//GEN-LAST:event_buttonMergeSelectedPicturesActionPerformed
 
+    
+   
     
     JPanel jpn1child = new JPanel();
     JScrollPane scrollpane = new JScrollPane(jpn1child);
@@ -396,7 +396,35 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         parentFrame.getImageEditor().getPanelForIcons().updateUI();
     }
     
+    public void fullFillPanelwithDirMerged(JPanel JpnN ,ArrayList<Image> images ){
+        GenericExtFilter filter = new GenericExtFilter(array);
+        
+        
+        JpnN.setBackground(java.awt.Color.pink);
+        
+        jpn1child.setLayout(new GridLayout(0,2));
+        for(Image image : images){
+        if(image!=null){
+                imagePanel jp = new imagePanel(image  , null);
+                jp.setSize(300,300);
+                jpn1child.add(jp);
+                jp.setVisible(true);
+            }
+        }
+        
+        scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getPanelForResult().getParent().getWidth(), 20000);
+        JpnN.setLayout(new BorderLayout());
+        JpnN.add(scrollpane , BorderLayout.CENTER);
+        JpnN.repaint();
+        JpnN.revalidate();
+        parentFrame.getImageEditor().getPanelForIcons().updateUI();
+    }
     
+    
+                               
+
     
     
     
@@ -434,8 +462,47 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void buttonMergeDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeDirectoriesActionPerformed
-        // TODO add your handling code here:
+        ArrayList<imagePanel> currentDirectoriesToMerge = new ArrayList<>();
+        try{
+            currentDirectoriesToMerge = parentFrame.getOperationsPanel().selectedDirectories;
+        }
+        catch(Exception exc){}
+        Merging_Directories Test = new Merging_Directories();
         
+        //Getting type of selected choice how to merge (OR , XOR , AND)
+        int type = 0 ;
+        
+        if(null != selectedButton)switch (selectedButton) {
+            case "AND":
+                type = 0;
+                break;
+            case "OR":
+                type = 1;
+                break;
+            case "XOR":
+                type = 2;
+                break;
+        }
+        
+        //Getting selected images  and putting them into ArrayList<File> inside Test(class Merging instance)
+        for(imagePanel imgPn : currentDirectoriesToMerge ){
+            if(imgPn.selected == true)
+                Test.imagesSelected.add(imgPn.fileOfImage);
+        }
+        
+        if(Test.imagesSelected.isEmpty() == true){
+            //custom title, error icon
+            JOptionPane.showMessageDialog(parentFrame,"Choose image/directory before you merge","" ,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        //Merging operation in action
+            try{
+                Test.merge(type);
+            }
+            catch(Exception e){}
+        }
+        
+        fullFillPanelwithDirMerged(parentFrame.getImageEditor().getPanelForResult() , Test.result_images );                        
     }//GEN-LAST:event_buttonMergeDirectoriesActionPerformed
 
     private void buttonClearResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearResultsActionPerformed
