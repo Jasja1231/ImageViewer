@@ -5,6 +5,7 @@
  */
 package ImageEditorPackage;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -61,7 +62,10 @@ public class Merging extends imagePanel {
             if(img1.getHeight()>img2.getHeight())
                 fHeight = img1.getHeight();
             else fHeight = img2.getHeight();
-            resize(fWidth,fHeight);
+            int typ = img1.getType() == 0? BufferedImage.TYPE_INT_ARGB : img1.getType();
+            img1 = resize(img1,fHeight,fWidth,typ);
+                typ = img2.getType() == 0? BufferedImage.TYPE_INT_ARGB : img2.getType();
+            img2 = resize(img2,fHeight,fWidth,typ);
             //--------------------------------------------
             //Merging part--------------------------------
             BufferedImage tempres1 = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);
@@ -85,13 +89,20 @@ public class Merging extends imagePanel {
         
         result_image = result.getScaledInstance((int)result.getWidth()-4, (int)result.getHeight(),BufferedImage.TYPE_INT_RGB);
     }
-    
-    @Override
+    private static BufferedImage resize(BufferedImage originalImage, int H,int W, int typ){
+	BufferedImage resizedImage = new BufferedImage(W, H, typ);
+	Graphics2D g = resizedImage.createGraphics();
+	g.drawImage(originalImage, 0, 0, W, H, null);
+	g.dispose();
+ 
+	return resizedImage;
+    }
+/*    @Override
     public void resize(int x, int y)
     {
-        img1.getScaledInstance(x, y, Image.SCALE_DEFAULT);
-        img2.getScaledInstance(x, y, Image.SCALE_DEFAULT);  
-    }
+        Image img21 = (BufferedImage)img1.getScaledInstance(x, y, Image.SCALE_AREA_AVERAGING);
+        Image img22 = (BufferedImage)img2.getScaledInstance(x, y, Image.SCALE_AREA_AVERAGING);  
+    }*/
     private int funcToUse(int c1, int c2, int type)
     {
         int cres=0;
