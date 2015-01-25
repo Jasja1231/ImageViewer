@@ -290,12 +290,15 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         fullFillPanelwithOneMergedImage(parentFrame.getImageEditor().getPanelForResult() , Test.result_image );
     }//GEN-LAST:event_buttonMergeSelectedPicturesActionPerformed
 
+    
+    JPanel jpn1child = new JPanel();
+    JScrollPane scrollpane = new JScrollPane(jpn1child);
     public void fullFillPanelwithOneMergedImage(JPanel JpnN , Image image ){
         GenericExtFilter filter = new GenericExtFilter(array);
         //JpnN.removeAll();
         
         JpnN.setBackground(java.awt.Color.ORANGE);
-        JPanel jpn1child = new JPanel();
+        
         jpn1child.setLayout(new GridLayout(0,2));
         
         if(image!=null){
@@ -305,8 +308,6 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             jp.setVisible(true);
         }
         
-                                
-        JScrollPane scrollpane = new JScrollPane(jpn1child);
         scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getPanelForResult().getParent().getWidth(), 20000);
