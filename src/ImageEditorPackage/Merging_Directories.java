@@ -9,6 +9,6 @@ package ImageEditorPackage;
  *
  * @author Bob
  */
-public class Merging_Directories {
+public class Merging_Directories extends Merging {
     
 }
