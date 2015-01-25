@@ -23,33 +23,33 @@ public class imagePanel extends javax.swing.JPanel {
     /**
      * Creates new form imagePanel
      */
-    //private ArrayList<File> imagesSelected = new ArrayList<File>();
-    
+   
     public boolean selected = false;
+    public File fileOfImage;
+    
     public imagePanel() {
         initComponents();
     }
 
-    /*public ArrayList<File> geimagesSelectedList(){
-        return imagesSelected;
-    }*/
+    
     
     imagePanel(Image image , File img) {
+        fileOfImage = img;
         this.setSize(250, 250);
-        Image tmp =null;
+        Image tmp = null;
         tmp = image.getScaledInstance(250, 250 , Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(tmp);
         JLabel picLabel = new JLabel(icon);
         JCheckBox checkbox = new JCheckBox();
         checkbox.addActionListener(new ActionListener() {
-            
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(selected == false)
+                if(selected == false){
                     selected = true;
-                else if(selected == false){
+                    }
+                else if(selected == true){
                     selected = false;
-                }
+                    }
             }
         });
         checkbox.setVisible(true);

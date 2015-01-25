@@ -26,7 +26,9 @@ public class Merging extends imagePanel {
     
     
     public Merging() {
+        
     }
+    
     public void merge(int type) throws IOException
     {
         int fHeight = 0;

@@ -15,7 +15,7 @@ import java.io.File;
  *
  * @author Jaryna
  */
-public class mainFrame extends javax.swing.JFrame {
+public final class mainFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form mainFrame
@@ -24,6 +24,9 @@ public class mainFrame extends javax.swing.JFrame {
         initComponents();
        this.setMinimumSize(new Dimension(800, 600));
        displayPanel.setLayout(new BorderLayout());
+       this.getImageEditor().setParentFrame(this);
+       this.getImageBrowser().setParentFrame(this);
+       this.getOperationsPanel().setParentFrame(this);
        displayPanel.add(firstPanelImageEditor1 ,BorderLayout.CENTER );
        displayPanel.add(seconPanelImageBrowse1 ,BorderLayout.WEST);
        displayPanel.add(thirdPanelOperation1 ,BorderLayout.EAST);
@@ -43,19 +46,10 @@ public class mainFrame extends javax.swing.JFrame {
         return this.seconPanelImageBrowse1;
     }
     
+      public ThirdPanelOperation getOperationsPanel(){
+        return this.thirdPanelOperation1;
+    }
     
-    /*public void constructComboBox(File[] directories){
-        
-        for(File dir : directories){
-            firstPanelImageEditor1.clearComboBox();
-            if(dir != null){
-                firstPanelImageEditor1.addToComboBox(dir.getName());
-            }
-            else if(dir == null){
-                firstPanelImageEditor1.addToComboBox("No directory");
-            }
-        }
-    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

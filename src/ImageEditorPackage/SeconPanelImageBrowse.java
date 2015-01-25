@@ -29,23 +29,21 @@ import javax.swing.border.TitledBorder;
  */
 public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
-    
     private ArrayList<imagePanel> imagepanel1 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel2 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel3 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel4 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel5 = new ArrayList<>();
     
-    
-    
     private mainFrame parentFrame = (mainFrame) this.getParent();
     
-    private int count = 0;
-     JTextField displayDirName1  = new JTextField(15);
-     JTextField displayDirName2  = new JTextField(15);
-     JTextField displayDirName3  = new JTextField(15);
-     JTextField displayDirName4  = new JTextField(15);
-     JTextField displayDirName5  = new JTextField(15);
+    int count = 0;
+    
+    JTextField displayDirName1  = new JTextField(15);
+    JTextField displayDirName2  = new JTextField(15);
+    JTextField displayDirName3  = new JTextField(15);
+    JTextField displayDirName4  = new JTextField(15);
+    JTextField displayDirName5  = new JTextField(15);
     
      JPanel panelOfDirectory1 = new JPanel();
      JPanel panelOfDirectory2 = new JPanel();

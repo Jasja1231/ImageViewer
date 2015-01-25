@@ -5,7 +5,9 @@
  */
 package ImageEditorPackage;
 
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,15 +19,24 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
      * Creates new form ThirdPanelOperation
      */
     
+    private   mainFrame parentFrame = (mainFrame) this.getParent();
+    
+    public void setParentFrame(mainFrame frame) {
+        parentFrame = frame;
+    }
+    
+    ButtonGroup group  = new ButtonGroup();
+    String selectedButton = "AND";
+    
     public ThirdPanelOperation() {
         initComponents();
-        ButtonGroup group  = new ButtonGroup(); 
-        
         group.add(jRadioButton1);
         group.add(jRadioButton2);
         group.add(jRadioButton3);
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +51,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox();
         buttonMergeSelectedPictures = new javax.swing.JButton();
         buttonMergeDirectories = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -58,10 +70,32 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Merge", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
         jRadioButton1.setText("AND");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("OR");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jRadioButton3.setText("XOR");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Erlarge smaller", "Shrink bigger", "Center", "Center and cut" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,12 +103,17 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
-                .addGap(30, 30, 30)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton3)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(48, 48, 48)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(jRadioButton3)
+                        .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +123,9 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1)
+                .addContainerGap())
         );
 
         buttonMergeSelectedPictures.setText("Merge Pictures");
@@ -127,7 +168,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         );
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Directory 1", "Directory 2", "Directory 3", "Directory 4", "Directory 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -142,10 +183,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelForOperationsLayout.createSequentialGroup()
                 .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonMergeSelectedPictures)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelForOperationsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(buttonMergeDirectories)))
-                .addGap(18, 18, 18)
+                    .addComponent(buttonMergeDirectories))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -158,17 +197,14 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelForOperationsLayout.createSequentialGroup()
                         .addComponent(buttonMergeSelectedPictures)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonMergeDirectories))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-
-        panelForOperationsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPanel1, jPanel2});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -189,15 +225,74 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMergeSelectedPicturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeSelectedPicturesActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
+        try{
+            currentSelectedImagePanels = parentFrame.getImageEditor().getCurrentPanelSetOfImages();
+        }
+        catch(Exception exc){}
         Merging Test = new Merging();
         
+        //Getting type of selected choice how to merge (OR , XOR , AND)
+        int type = 0 ;
+        
+        if(null != selectedButton)switch (selectedButton) {
+            case "AND":
+                type = 0;
+                break;
+            case "OR":
+                type = 1;
+                break;
+            case "XOR":
+                type = 2;
+                break;
+        }
+        
+        //Getting selected images  and putting them into ArrayList<File> inside Test(class Merging instance)
+        for(imagePanel imgPn : currentSelectedImagePanels ){
+            if(imgPn.selected == true)
+                Test.imagesSelected.add(imgPn.fileOfImage);
+        }
+        
+        if(Test.imagesSelected.isEmpty() == true){
+            //custom title, error icon
+            JOptionPane.showMessageDialog(parentFrame,"Choose image before you merge","" ,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        //Merging operation in action
+            try{
+                Test.merge(type);
+            }
+            catch(Exception e){}
+        }
+     
     }//GEN-LAST:event_buttonMergeSelectedPicturesActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        selectedButton = "AND";
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        selectedButton = "OR";
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+        selectedButton = "XOR";
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonMergeDirectories;
     private javax.swing.JButton buttonMergeSelectedPictures;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;

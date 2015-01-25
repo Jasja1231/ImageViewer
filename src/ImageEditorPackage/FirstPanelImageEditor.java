@@ -20,7 +20,12 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
      */
     public ArrayList<imagePanel> currentpanel = new ArrayList<>();
     
-    private  mainFrame parentFrame = (mainFrame) this.getParent();
+    private   mainFrame parentFrame = (mainFrame) this.getParent();
+    
+    
+    public void setParentFrame(mainFrame frame) {
+        parentFrame = frame;
+    }
     
     public FirstPanelImageEditor() {
         initComponents();
@@ -33,6 +38,10 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
     
     public JPanel getPanelForIcons(){
         return panelForIcons;
+    }
+      
+     public ArrayList<imagePanel> getCurrentPanelSetOfImages(){
+        return currentpanel;
     }
       
     /**
@@ -51,12 +60,14 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn3 = new javax.swing.JPanel();
         jpn4 = new javax.swing.JPanel();
         jpn5 = new javax.swing.JPanel();
+        panelForResult = new javax.swing.JPanel();
         panelForDirButtons = new javax.swing.JPanel();
         buttonDir1 = new javax.swing.JButton();
         buttonDir2 = new javax.swing.JButton();
         buttonDir3 = new javax.swing.JButton();
         buttonDir4 = new javax.swing.JButton();
         buttonDir5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(476, 599));
         setName(""); // NOI18N
@@ -75,7 +86,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn1.setLayout(jpn1Layout);
         jpn1Layout.setHorizontalGroup(
             jpn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         jpn1Layout.setVerticalGroup(
             jpn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +101,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn2.setLayout(jpn2Layout);
         jpn2Layout.setHorizontalGroup(
             jpn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         jpn2Layout.setVerticalGroup(
             jpn2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +116,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn3.setLayout(jpn3Layout);
         jpn3Layout.setHorizontalGroup(
             jpn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         jpn3Layout.setVerticalGroup(
             jpn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +132,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn4.setLayout(jpn4Layout);
         jpn4Layout.setHorizontalGroup(
             jpn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         jpn4Layout.setVerticalGroup(
             jpn4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +148,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         jpn5.setLayout(jpn5Layout);
         jpn5Layout.setHorizontalGroup(
             jpn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         jpn5Layout.setVerticalGroup(
             jpn5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +156,19 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
 
         panelForIcons.add(jpn5, "jpn5");
+
+        javax.swing.GroupLayout panelForResultLayout = new javax.swing.GroupLayout(panelForResult);
+        panelForResult.setLayout(panelForResultLayout);
+        panelForResultLayout.setHorizontalGroup(
+            panelForResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 561, Short.MAX_VALUE)
+        );
+        panelForResultLayout.setVerticalGroup(
+            panelForResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 538, Short.MAX_VALUE)
+        );
+
+        panelForIcons.add(panelForResult, "result");
 
         panelImageEditor.add(panelForIcons, java.awt.BorderLayout.CENTER);
 
@@ -188,6 +212,14 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         });
         panelForDirButtons.add(buttonDir5);
 
+        jButton1.setText("     Result     ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelForDirButtons.add(jButton1);
+
         panelImageEditor.add(panelForDirButtons, java.awt.BorderLayout.PAGE_START);
 
         add(panelImageEditor, java.awt.BorderLayout.CENTER);
@@ -200,9 +232,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         try{
             currentpanel = parentFrame.getImageBrowser().getImagePanel1();
         }
-        catch(Exception e){
-        
-        }
+        catch(Exception e){}
         CardLayout card = (CardLayout) panelForIcons.getLayout();
         card.show(panelForIcons, "jpn1");
     }//GEN-LAST:event_buttonDir1ActionPerformed
@@ -211,9 +241,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         try{
             currentpanel = parentFrame.getImageBrowser().getImagePanel4();
         }
-        catch(Exception e){
-        
-        }
+        catch(Exception e){}
         CardLayout card = (CardLayout) panelForIcons.getLayout();
         card.show(panelForIcons, "jpn4");    
     }//GEN-LAST:event_buttonDir4ActionPerformed
@@ -251,6 +279,12 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         card.show(panelForIcons, "jpn5");
     }//GEN-LAST:event_buttonDir5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout) panelForIcons.getLayout();
+        card.show(panelForIcons, "result");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     String[] array = {".jpg",".png", ".jpeg"," .tiff",".tif"," .bmp" ,".JPG" };
     GenericExtFilter filter = new GenericExtFilter(array);
         
@@ -278,6 +312,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
     private javax.swing.JButton buttonDir3;
     private javax.swing.JButton buttonDir4;
     private javax.swing.JButton buttonDir5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jpn1;
     private javax.swing.JPanel jpn2;
     private javax.swing.JPanel jpn3;
@@ -285,6 +320,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
     private javax.swing.JPanel jpn5;
     private javax.swing.JPanel panelForDirButtons;
     private javax.swing.JPanel panelForIcons;
+    private javax.swing.JPanel panelForResult;
     private javax.swing.JPanel panelImageEditor;
     // End of variables declaration//GEN-END:variables
 }
