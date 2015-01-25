@@ -8,6 +8,7 @@ package ImageEditorPackage;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -60,6 +61,35 @@ public class imagePanel extends javax.swing.JPanel {
         this.add(picLabel);
         this.add(checkbox);
         //this.repaint();
+    }
+    
+    //copy Constructor for imagePanel
+    imagePanel(BufferedImage image , File img) {
+        fileOfImage = img;
+        this.setSize(250, 250);
+        BufferedImage tmp = null;
+        tmp = (BufferedImage) image.getScaledInstance(250, 250 , Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(tmp);
+        JLabel picLabel = new JLabel(icon);
+        JCheckBox checkbox = new JCheckBox();
+        checkbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(selected == false){
+                    selected = true;
+                    }
+                else if(selected == true){
+                    selected = false;
+                    }
+            }
+        });
+        checkbox.setVisible(true);
+        
+        picLabel.add(checkbox);
+        
+        picLabel.setSize(this.getSize());
+        this.add(picLabel);
+        this.add(checkbox);
     }
 
     /**

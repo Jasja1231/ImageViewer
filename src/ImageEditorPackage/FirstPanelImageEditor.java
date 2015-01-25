@@ -19,9 +19,7 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
      * Creates new form FirstPanelImageEditor
      */
     public ArrayList<imagePanel> currentpanel = new ArrayList<>();
-    
     private   mainFrame parentFrame = (mainFrame) this.getParent();
-    
     
     public void setParentFrame(mainFrame frame) {
         parentFrame = frame;

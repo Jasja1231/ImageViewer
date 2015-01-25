@@ -25,10 +25,12 @@ public class Merging extends imagePanel {
     public BufferedImage result;
     
     
+    
     public Merging() {
         
     }
     
+   
     public void merge(int type) throws IOException
     {
         int fHeight = 0;
@@ -77,8 +79,9 @@ public class Merging extends imagePanel {
             prev = tempres1;
         }
         result = new BufferedImage(fHeight, fWidth,BufferedImage.TYPE_INT_RGB);
-        result = prev;
+        result = prev;     
     }
+    
     @Override
     public void resize(int x, int y)
     {
