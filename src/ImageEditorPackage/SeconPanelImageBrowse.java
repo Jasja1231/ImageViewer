@@ -20,6 +20,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 
 /**
@@ -139,20 +140,22 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //setting file to null , clear file(directory that we deleted
-                file1 = null;
-                parentFrame.getImageEditor().getJpn1().removeAll();
-                parentFrame.getImageEditor().getJpn1().repaint();
                 displayDirName1.setText(null);
                 if(count == 1){
+                    file1 = null;
+                    parentFrame.getImageEditor().getJpn1().removeAll();
+                    parentFrame.getImageEditor().getJpn1().repaint();
                     panelOfDirectory1.setVisible(false);
                     count--;
                 }
                 else if(count == 2){
                     displayDirName1.setText(displayDirName2.getText());
                     panelOfDirectory2.setVisible(false);
-                     displayDirName2.setText(null);
+                    displayDirName2.setText(null);
                     count--;
+                    fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser2 , imagepanel1);
+                    parentFrame.getImageEditor().getJpn2().removeAll();
+                    imagepanel2.clear();
                 }
                 else if(count == 3){
                     displayDirName1.setText(displayDirName2.getText());
@@ -160,6 +163,11 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     displayDirName3.setText(null);
                     panelOfDirectory3.setVisible(false);
                     count--;
+                    
+                    fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser2 , imagepanel1);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel3);
+                    parentFrame.getImageEditor().getJpn3().removeAll();
+                    imagepanel3.clear();
                 }
                 else if(count == 4){
                     displayDirName1.setText(displayDirName2.getText());
@@ -168,6 +176,12 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     displayDirName4.setText(null);
                     panelOfDirectory4.setVisible(false);
                     count--;
+                    
+                    fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser2 , imagepanel1);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel3);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file4, chooser4 , imagepanel4);
+                    parentFrame.getImageEditor().getJpn4().removeAll();
+                    imagepanel4.clear();
                 }
                 else if(count == 5){
                     displayDirName1.setText(displayDirName2.getText());
@@ -177,6 +191,14 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                     displayDirName5.setText(null);
                     panelOfDirectory5.setVisible(false);
                     count--;
+                    
+                    fullFillPanel(parentFrame.getImageEditor().getJpn1(),file1, chooser2 , imagepanel1);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel3);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file4, chooser4 , imagepanel4);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn4(),file5, chooser5 , imagepanel5);
+                    parentFrame.getImageEditor().getJpn5().removeAll();
+                    imagepanel5.clear();
+                    
                    // AddNewDirectory.setVisible(true);
                     AddNewDirectory.setEnabled(true);
                 }
@@ -188,7 +210,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             JPanel panelTest = new JPanel();
             panelTest.setLayout(new GridBagLayout());
                      
-                     panelTest.add(buttonOpen1);
+            panelTest.add(buttonOpen1);
                      panelTest.add(displayDirName1);
                      panelTest.add(buttonRemove1);
                      
@@ -231,20 +253,25 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             JButton buttonRemove2 = new JButton();
              buttonRemove2.addActionListener((ActionEvent e) -> {
                  //setting file to null , clear file(directory that we deleted)
-                file2 = null;
-                parentFrame.getImageEditor().getJpn2().removeAll();
-                parentFrame.getImageEditor().getJpn2().repaint();
+                
                 if(count == 2){
-                     panelOfDirectory2.setVisible(false);
-                     displayDirName2.setText(null);
-                     count--;
+                    panelOfDirectory2.setVisible(false);
+                    displayDirName2.setText(null);
+                    count--;
+                    
+                    file2 = null;
+                    parentFrame.getImageEditor().getJpn2().removeAll();
+                    parentFrame.getImageEditor().getJpn2().repaint();
                  }
                  else if(count == 3){
+                    displayDirName2.setText(displayDirName3.getText());
+                    displayDirName3.setText(null);
+                    panelOfDirectory3.setVisible(false);
+                    count--;
                      
-                     displayDirName2.setText(displayDirName3.getText());
-                     displayDirName3.setText(null);
-                     panelOfDirectory3.setVisible(false);
-                     count--;
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel2);
+                    parentFrame.getImageEditor().getJpn3().removeAll();
+                    imagepanel3.clear();
                  }
                  else if(count == 4){
                      displayDirName2.setText(displayDirName3.getText());
@@ -252,6 +279,11 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      displayDirName4.setText(null);
                      panelOfDirectory4.setVisible(false);
                      count--;
+                     
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel2);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser4 , imagepanel3);
+                    parentFrame.getImageEditor().getJpn4().removeAll();
+                    imagepanel4.clear();
                  }
                  else if(count == 5){
                      displayDirName2.setText(displayDirName3.getText());
@@ -260,6 +292,13 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      displayDirName5.setText(null);
                      panelOfDirectory5.setVisible(false);
                      count--;
+                     
+                    fullFillPanel(parentFrame.getImageEditor().getJpn2(),file2, chooser3 , imagepanel2);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser4 , imagepanel3);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser5 , imagepanel4);
+                    parentFrame.getImageEditor().getJpn5().removeAll();
+                    imagepanel5.clear();
+                     
                      //AddNewDirectory.setVisible(true);
                      AddNewDirectory.setEnabled(true);
                  }
@@ -316,19 +355,25 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             JButton buttonRemove3 = new JButton();
                buttonRemove3.addActionListener((ActionEvent e) -> {
                    //setting file to null , clear file(directory that we deleted)
-                   file3 = null;
-                   parentFrame.getImageEditor().getJpn3().removeAll();
-                   parentFrame.getImageEditor().getJpn3().repaint();
+                   
                  if(count == 3){
                      displayDirName3.setText(null);
                      panelOfDirectory3.setVisible(false);
                      count--;
+                     
+                    file3 = null;
+                    parentFrame.getImageEditor().getJpn3().removeAll();
+                    parentFrame.getImageEditor().getJpn3().repaint();
                  }
                  else if(count == 4){
-                     displayDirName3.setText(displayDirName4.getText());
-                     displayDirName4.setText(null);
-                     panelOfDirectory4.setVisible(false);
-                     count--;
+                    displayDirName3.setText(displayDirName4.getText());
+                    displayDirName4.setText(null);
+                    panelOfDirectory4.setVisible(false);
+                    count--;
+                     
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser4 , imagepanel3);
+                    parentFrame.getImageEditor().getJpn4().removeAll();
+                    imagepanel4.clear();
                  }
                  else if(count == 5){
                      displayDirName3.setText(displayDirName4.getText());
@@ -336,8 +381,14 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      displayDirName5.setText(null);
                      panelOfDirectory5.setVisible(false);
                      count--;
-                     //AddNewDirectory.setVisible(true);
-                     AddNewDirectory.setEnabled(true);
+                     
+                    fullFillPanel(parentFrame.getImageEditor().getJpn3(),file3, chooser4 , imagepanel3);
+                    fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser5 , imagepanel4);
+                    parentFrame.getImageEditor().getJpn5().removeAll();
+                    imagepanel5.clear();
+                     
+                    //AddNewDirectory.setVisible(true);
+                    AddNewDirectory.setEnabled(true);
                  }
         });
             buttonRemove3.setText("X");
@@ -390,21 +441,28 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
             JButton buttonRemove4 = new JButton();
                  buttonRemove4.addActionListener((ActionEvent e) -> {
                  //setting file to null , clear file(directory that we deleted)
-                 file4 = null; 
-                 parentFrame.getImageEditor().getJpn4().removeAll();
-                 parentFrame.getImageEditor().getJpn4().repaint();
+                 
                  if(count == 4){
-                        displayDirName4.setText(null);
-                     panelOfDirectory4.setVisible(false);
-                     count--;
+                    displayDirName4.setText(null);
+                    panelOfDirectory4.setVisible(false);
+                    count--;
+                     
+                    file4 = null; 
+                    parentFrame.getImageEditor().getJpn4().removeAll();
+                    parentFrame.getImageEditor().getJpn4().repaint();
                  }
                  else if(count == 5){
-                     displayDirName4.setText(displayDirName5.getText());
-                     displayDirName5.setText(null);
-                     panelOfDirectory5.setVisible(false);
-                     count--;
-                     //AddNewDirectory.setVisible(true);
-                     AddNewDirectory.setEnabled(true);
+                    displayDirName4.setText(displayDirName5.getText());
+                    displayDirName5.setText(null);
+                    panelOfDirectory5.setVisible(false);
+                    count--;
+                     
+                    fullFillPanel(parentFrame.getImageEditor().getJpn4(),file4, chooser5 , imagepanel4);
+                    parentFrame.getImageEditor().getJpn5().removeAll();
+                    imagepanel5.clear();
+                     
+                    //AddNewDirectory.setVisible(true);
+                    AddNewDirectory.setEnabled(true);
                  }
         });
             buttonRemove4.setText("X");
@@ -478,7 +536,6 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
                      panelTest5.add(buttonRemove5);
                     
             panelOfDirectory5.add(panelTest5); 
-              
     }
     
 
@@ -644,6 +701,12 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         parentFrame.getImageEditor().getJpn4().repaint();
         parentFrame.getImageEditor().getJpn5().repaint();
         
+        imagepanel1.clear();
+        imagepanel2.clear();
+        imagepanel3.clear();
+        imagepanel4.clear();
+        imagepanel5.clear();
+    
     }//GEN-LAST:event_buttonRemoveAllActionPerformed
 
     public void fullFillPanel(JPanel JpnN , File file  , JFileChooser chooser , ArrayList<imagePanel> imagepanel){
