@@ -39,6 +39,7 @@ public class Merging extends imagePanel {
         int x=0;
         int y=0;
         int i=0;
+        int counter=0;
         BufferedImage prev = null;
         
         for(;i<imagesSelected.size()-1;i++)
@@ -63,23 +64,23 @@ public class Merging extends imagePanel {
             resize(fWidth,fHeight);
             //--------------------------------------------
             //Merging part--------------------------------
-            BufferedImage tempres1 = new BufferedImage(fHeight, fWidth,BufferedImage.TYPE_INT_RGB);
+            BufferedImage tempres1 = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);
             for(int k=0;k<fWidth;k++)
             {
                 for(int l=0;l<fHeight;l++)
                 {
                    int c1 = img1.getRGB(k, l);
                    int c2 = img2.getRGB(k, l);
-                   int cres;
+                   int cres=0;
                    
                    cres = funcToUse(c1,c2, type);
                    tempres1.setRGB(k,l,cres);
                 }
+                counter++;
             }
-            //--------------------------------------------
             prev = tempres1;
         }
-        result = new BufferedImage(fHeight, fWidth,BufferedImage.TYPE_INT_RGB);
+        result = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);
         result = prev;     
         
         result_image = result.getScaledInstance((int)result.getWidth()-4, (int)result.getHeight(),BufferedImage.TYPE_INT_RGB);
