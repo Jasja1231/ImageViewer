@@ -157,6 +157,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Merge Pictures"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMergeSelectedPicturesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonMergeDirectories">
           <Properties>
