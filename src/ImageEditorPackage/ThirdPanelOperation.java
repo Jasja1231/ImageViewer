@@ -150,6 +150,11 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         });
 
         buttonMergeDirectories.setText("Merge Direcctories");
+        buttonMergeDirectories.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMergeDirectoriesActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Shading", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
@@ -348,6 +353,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         // TODO add your handling code here:
         selectedButton = "XOR";
     }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void buttonMergeDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeDirectoriesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMergeDirectoriesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
