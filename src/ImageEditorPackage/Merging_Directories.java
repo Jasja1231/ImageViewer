@@ -11,4 +11,7 @@ package ImageEditorPackage;
  */
 public class Merging_Directories extends Merging {
     
+    void mergedir(int type){
+        
+    }
 }
