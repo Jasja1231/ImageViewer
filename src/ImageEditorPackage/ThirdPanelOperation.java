@@ -472,6 +472,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         //Getting type of selected choice how to merge (OR , XOR , AND)
         int type = 0 ;
         
+        //select type how to merge
         if(null != selectedButton)switch (selectedButton) {
             case "AND":
                 type = 0;
