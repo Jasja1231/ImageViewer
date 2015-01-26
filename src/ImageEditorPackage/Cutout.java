@@ -54,7 +54,6 @@ public class Cutout extends Merging {
                 if(type==1)
                 img = resize(img,maxWidth,img.getHeight(),BufferedImage.TYPE_INT_ARGB);
                 else img = resize(img,img.getWidth(),maxHeight,BufferedImage.TYPE_INT_ARGB);
-                ImageIO.read(imagesSelected.get(i));
             }
 
             
@@ -87,9 +86,12 @@ public class Cutout extends Merging {
                 
                 img = ImageIO.read(imagesSelected.get(i));
                 if(p==1)
+                    img = resize(img,img.getHeight(),maxWidth,BufferedImage.TYPE_INT_ARGB);
+                else img = resize(img,maxHeight,img.getWidth(),BufferedImage.TYPE_INT_ARGB);
+                if(p==1)
                 {
                     strHeight=img.getHeight()/number;
-                    strWidth = img.getWidth();
+                    strWidth = img.getWidth(); 
                 }
                 else {
                     strWidth = img.getWidth()/number;
