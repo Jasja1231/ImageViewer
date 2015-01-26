@@ -27,7 +27,7 @@ public class imagePanel extends javax.swing.JPanel {
    
     public boolean selected = false;
     public File fileOfImage;
-    
+    public Image imageInstance;
     public imagePanel() {
         initComponents();
     }
@@ -36,6 +36,7 @@ public class imagePanel extends javax.swing.JPanel {
     
     imagePanel(Image image , File img) {
         fileOfImage = img;
+        imageInstance = image;
         this.setSize(250, 250);
         Image tmp = null;
         tmp = image.getScaledInstance(250, 250 , Image.SCALE_SMOOTH);
