@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Math.random;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Random;
@@ -45,6 +46,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     ButtonGroup group  = new ButtonGroup();
     ButtonGroup group_cutout  = new ButtonGroup();
+    ButtonGroup group_format  = new ButtonGroup();
+    
     String selectedButton = "AND";
     
     String selectedSizeType = "ErlargeSmaller";
@@ -58,7 +61,15 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         group.add(jRadioButton3);
         
         group_cutout.add(jRadioButton4);
-        group_cutout.add(jRadioButton5);        
+        group_cutout.add(jRadioButton5);  
+        
+        group_format.add(formatJPEG);
+        group_format.add(formatJPG);
+        group_format.add(formatPNG);
+        group_format.add(formatTIFF);
+        group_format.add(formatBMP);
+        
+    
     }
 
     
@@ -96,6 +107,12 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         buttonSaveSelected = new javax.swing.JButton();
         buttonSaveAll = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        formatPNG = new javax.swing.JRadioButton();
+        formatBMP = new javax.swing.JRadioButton();
+        formatTIFF = new javax.swing.JRadioButton();
+        formatJPEG = new javax.swing.JRadioButton();
+        formatJPG = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 102, 0));
         setMaximumSize(new java.awt.Dimension(2147483647, 200));
@@ -149,7 +166,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                         .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton3)
-                        .addGap(0, 42, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -322,28 +339,90 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save as", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
+
+        formatPNG.setText("PNG");
+        formatPNG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatPNGActionPerformed(evt);
+            }
+        });
+
+        formatBMP.setText("BMP");
+        formatBMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatBMPActionPerformed(evt);
+            }
+        });
+
+        formatTIFF.setText("TIFF");
+        formatTIFF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatTIFFActionPerformed(evt);
+            }
+        });
+
+        formatJPEG.setText("JPEG");
+        formatJPEG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatJPEGActionPerformed(evt);
+            }
+        });
+
+        formatJPG.setText("JPG");
+        formatJPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatJPGActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(formatPNG)
+            .addComponent(formatBMP)
+            .addComponent(formatTIFF)
+            .addComponent(formatJPEG)
+            .addComponent(formatJPG)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(formatPNG)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(formatBMP)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(formatTIFF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(formatJPEG)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(formatJPG)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelForOperationsLayout = new javax.swing.GroupLayout(panelForOperations);
         panelForOperations.setLayout(panelForOperationsLayout);
         panelForOperationsLayout.setHorizontalGroup(
             panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelForOperationsLayout.createSequentialGroup()
-                .addComponent(buttonClearResults, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelForOperationsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
-            .addGroup(panelForOperationsLayout.createSequentialGroup()
-                .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(buttonSaveAll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCutout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonMergeSelectedPictures, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                    .addComponent(buttonMergeDirectories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonSaveSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelForOperationsLayout.createSequentialGroup()
+                        .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonClearResults, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonSaveSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(buttonSaveAll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonCutout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                            .addComponent(buttonMergeSelectedPictures, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(buttonMergeDirectories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         panelForOperationsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonMergeDirectories, buttonMergeSelectedPictures});
@@ -358,18 +437,22 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonCutout)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonMergeDirectories)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonMergeSelectedPictures)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSaveAll)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSaveSelected)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClearResults)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelForOperationsLayout.createSequentialGroup()
+                        .addComponent(buttonCutout)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonMergeDirectories)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonMergeSelectedPictures)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSaveAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSaveSelected)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonClearResults)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelForOperationsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {buttonCutout, buttonMergeDirectories, buttonMergeSelectedPictures});
@@ -379,12 +462,12 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelForOperations, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -616,6 +699,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         parentFrame.getImageEditor().getPanelForResult().removeAll();
         jpn1child.removeAll();
         parentFrame.getImageEditor().getPanelForResult().updateUI();
+        resultArray.clear();
     }//GEN-LAST:event_buttonClearResultsActionPerformed
 
     boolean selectedDir1 = false;
@@ -702,7 +786,30 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }//GEN-LAST:event_textStripeActionPerformed
 
     private void buttonSaveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveSelectedActionPerformed
-        // TODO add your handling code here:
+       JFileChooser jFile = new JFileChooser();
+        jFile.setDialogTitle("Save file ...");
+        jFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnValue  = jFile.showSaveDialog(parentFrame);
+        //Path pth = jFile.getSelectedFile().toPath();
+        Path pth = jFile.getSelectedFile().toPath();
+        
+        File file = jFile.getSelectedFile();
+        
+        if(returnValue == JFileChooser.APPROVE_OPTION){
+        for(imagePanel imgpan : resultArray){
+                if(imgpan.selected==true){
+                    Random ran = new Random();
+                    Integer n  = ran.nextInt((30 - 2) + 1) + 2;
+                    String filename = "Image1" + n.toString();
+               try {
+                    ImageIO.write( imgpan.buffimage,"bmp" ,new File(pth + "\\" + filename+extention));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+               }
+           }
+        }
     }//GEN-LAST:event_buttonSaveSelectedActionPerformed
 
     private void buttonSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveAllActionPerformed
@@ -711,27 +818,53 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         jFile.setDialogTitle("Save file ...");
         jFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnValue  = jFile.showSaveDialog(parentFrame);
+        //Path pth = jFile.getSelectedFile().toPath();
         Path pth = jFile.getSelectedFile().toPath();
-        JOptionPane.showMessageDialog(parentFrame, pth.toString());
         
         File file = jFile.getSelectedFile();
         
         if(returnValue == JFileChooser.APPROVE_OPTION){
         for(imagePanel imgpan : resultArray){
-            try {
-                ImageIO.write( imgpan.buffimage,"BMP" ,file);
+            Random ran = new Random();
+            Integer n  = ran.nextInt((30 - 2) + 1) + 2;
+            String filename = "Image1" + n.toString();
+           try {
+                ImageIO.write( imgpan.buffimage,"bmp" ,new File(pth + "\\" + filename+extention));
             } catch (IOException ex) {
-                Logger.getLogger(ThirdPanelOperation.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
+            
             }
         }
             
-            
+  
     }//GEN-LAST:event_buttonSaveAllActionPerformed
-
+    
+    private String extention = ".jpg";    
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void formatJPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatJPGActionPerformed
+        extention = ".jpg";
+    }//GEN-LAST:event_formatJPGActionPerformed
+
+    private void formatPNGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatPNGActionPerformed
+         extention = ".png";
+    }//GEN-LAST:event_formatPNGActionPerformed
+
+    private void formatBMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatBMPActionPerformed
+         extention = ".bmp";
+    }//GEN-LAST:event_formatBMPActionPerformed
+
+    private void formatTIFFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatTIFFActionPerformed
+         extention = ".tiff";
+    }//GEN-LAST:event_formatTIFFActionPerformed
+
+    private void formatJPEGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatJPEGActionPerformed
+         extention = ".jpeg";
+    }//GEN-LAST:event_formatJPEGActionPerformed
+
 
     
 
@@ -748,11 +881,17 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     private javax.swing.JButton buttonMergeSelectedPictures;
     private javax.swing.JButton buttonSaveAll;
     private javax.swing.JButton buttonSaveSelected;
+    private javax.swing.JRadioButton formatBMP;
+    private javax.swing.JRadioButton formatJPEG;
+    private javax.swing.JRadioButton formatJPG;
+    private javax.swing.JRadioButton formatPNG;
+    private javax.swing.JRadioButton formatTIFF;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
