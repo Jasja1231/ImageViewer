@@ -93,7 +93,7 @@ public class Merging extends imagePanel {
                 typ = img2.getType() == 0? BufferedImage.TYPE_INT_ARGB : img2.getType();
             img2 = resize(img2,H,W,typ);
             //--------------------------------------------
-            //Merging part--------------------------------
+            //Merging part------------------------------
             BufferedImage tempres1 = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);
             for(int k=0;k<fWidth;k++)
             {
