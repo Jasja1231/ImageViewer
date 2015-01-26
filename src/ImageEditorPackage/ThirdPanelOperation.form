@@ -32,8 +32,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="panelForOperations" pref="308" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelForOperations" min="-2" pref="296" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,7 +66,7 @@
                       <Component id="buttonMergeSelectedPictures" linkSize="1" pref="139" max="32767" attributes="0"/>
                       <Component id="buttonMergeDirectories" linkSize="1" max="32767" attributes="0"/>
                       <Component id="buttonClearResults" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
-                      <Component id="buttonClearResults1" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                      <Component id="buttonCutout" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -94,7 +94,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="buttonClearResults1" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCutout" linkSize="2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Component id="buttonClearResults" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -303,12 +303,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="buttonClearResults1">
+        <Component class="javax.swing.JButton" name="buttonCutout">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cutout pictures"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonClearResults1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCutoutActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">

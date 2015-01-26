@@ -79,7 +79,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         box3 = new javax.swing.JCheckBox();
         box5 = new javax.swing.JCheckBox();
         box4 = new javax.swing.JCheckBox();
-        buttonClearResults1 = new javax.swing.JButton();
+        buttonCutout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
@@ -241,10 +241,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addComponent(box5))
         );
 
-        buttonClearResults1.setText("Cutout pictures");
-        buttonClearResults1.addActionListener(new java.awt.event.ActionListener() {
+        buttonCutout.setText("Cutout pictures");
+        buttonCutout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClearResults1ActionPerformed(evt);
+                buttonCutoutActionPerformed(evt);
             }
         });
 
@@ -301,7 +301,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                     .addComponent(buttonMergeSelectedPictures, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(buttonMergeDirectories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonClearResults, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClearResults1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonCutout, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelForOperationsLayout.createSequentialGroup()
                 .addGroup(panelForOperationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -329,20 +329,20 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonClearResults1)
+                .addComponent(buttonCutout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(buttonClearResults))
         );
 
-        panelForOperationsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {buttonClearResults1, buttonMergeDirectories, buttonMergeSelectedPictures});
+        panelForOperationsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {buttonCutout, buttonMergeDirectories, buttonMergeSelectedPictures});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelForOperations, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,8 +351,6 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMergeSelectedPicturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeSelectedPicturesActionPerformed
-        
-
         ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
 
         try{
@@ -444,6 +442,31 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 jp.setVisible(true);
             }
         }
+        
+        scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getPanelForResult().getParent().getWidth(), 20000);
+        JpnN.setLayout(new BorderLayout());
+        JpnN.add(scrollpane , BorderLayout.CENTER);
+        JpnN.repaint();
+        JpnN.revalidate();
+        parentFrame.getImageEditor().getPanelForIcons().updateUI();
+    }
+    
+ public void fullFillPanelwithCutout(JPanel JpnN ,Image image ){
+        GenericExtFilter filter = new GenericExtFilter(array);
+        
+        
+        JpnN.setBackground(java.awt.Color.pink);
+        
+        jpn1child.setLayout(new GridLayout(0,2));
+        
+        if(image!=null){
+            imagePanel jp = new imagePanel(image  , null);
+            jp.setSize(300,300);
+            jpn1child.add(jp);
+            jp.setVisible(true);
+         }
         
         scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -589,16 +612,58 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         actionForComboBox(selectedDir5 , parentFrame.getImageBrowser().getImagePanel5());
     }//GEN-LAST:event_box5ActionPerformed
 
-    private void buttonClearResults1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearResults1ActionPerformed
-       
+    private void buttonCutoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCutoutActionPerformed
+       ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
+
+        try{
+            currentSelectedImagePanels = parentFrame.getImageEditor().getCurrentPanelSetOfImages();
+        }
+        catch(Exception exc){}
+        Cutout Test = new Cutout();
         
-    }//GEN-LAST:event_buttonClearResults1ActionPerformed
+        //Getting type of selected choice how to merge (OR , XOR , AND)
+        int type = 0 ;
+        
+        if(null != selectedButton)switch (selectedButton) {
+            case "AND":
+                type = 0;
+                break;
+            case "OR":
+                type = 1;
+                break;
+            case "XOR":
+                type = 2;
+                break;
+        }
+        
+        //Getting selected images  and putting them into ArrayList<File> inside Test(class Merging instance)
+        for(imagePanel imgPn : currentSelectedImagePanels ){
+            if(imgPn.selected == true)
+                Test.imagesSelected.add(imgPn.fileOfImage);
+        }
+        
+        if(Test.imagesSelected.isEmpty() == true){
+            //custom title, error icon
+            JOptionPane.showMessageDialog(parentFrame,"Choose image before you make a cutput and click directory button on the top of the Image Editor to update you choice","" ,JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        //Merging operation in action
+            try{
+                Test.cut(number,type);
+            }
+            catch(Exception e){}
+        }
+        
+        fullFillPanelwithCutout(parentFrame.getImageEditor().getPanelForResult() , Test.result_image );
+        
+    }//GEN-LAST:event_buttonCutoutActionPerformed
 
     int number  = 1; 
     private void textStripeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textStripeActionPerformed
        number  = Integer.parseInt(textStripe.getText());
     }//GEN-LAST:event_textStripeActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox box1;
@@ -607,7 +672,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     private javax.swing.JCheckBox box4;
     private javax.swing.JCheckBox box5;
     private javax.swing.JButton buttonClearResults;
-    private javax.swing.JButton buttonClearResults1;
+    private javax.swing.JButton buttonCutout;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonMergeDirectories;
     private javax.swing.JButton buttonMergeSelectedPictures;
