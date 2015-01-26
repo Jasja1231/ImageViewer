@@ -25,7 +25,7 @@ public class Cutout {
     public BufferedImage result;
     public Image result_image;
     
-    public void cut(int number) throws IOException
+    public void cut(int number, int type) throws IOException
     {
         boolean loop = true;
         int counter =0;
