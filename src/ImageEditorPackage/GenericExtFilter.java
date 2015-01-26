@@ -9,8 +9,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- *
- * @author Jaryna
+ *Class to filter images with extentions that we need , array of  needed extentions is declared in every class 
  */
 class GenericExtFilter implements FilenameFilter {
     private final String[] ext;

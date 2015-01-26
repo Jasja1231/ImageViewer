@@ -23,12 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 
-/**
- *
- * @author Jaryna
- */
 public class SeconPanelImageBrowse extends javax.swing.JPanel {
 
+    //stores content of every directory
     private ArrayList<imagePanel> imagepanel1 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel2 = new ArrayList<>();
     private ArrayList<imagePanel> imagepanel3 = new ArrayList<>();
@@ -44,7 +41,7 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
     JTextField displayDirName3  = new JTextField(15);
     JTextField displayDirName4  = new JTextField(15);
     JTextField displayDirName5  = new JTextField(15);
-    
+    //panels - parent for filechoosers and textfield   , maaging directories
      JPanel panelOfDirectory1 = new JPanel();
      JPanel panelOfDirectory2 = new JPanel();
      JPanel panelOfDirectory3 = new JPanel();
@@ -553,7 +550,9 @@ public class SeconPanelImageBrowse extends javax.swing.JPanel {
         buttonSave = new javax.swing.JButton();
         panelDirectories = new javax.swing.JPanel();
 
-        panelAddDirectories.setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(255, 102, 0));
+
+        panelAddDirectories.setBackground(new java.awt.Color(255, 102, 0));
         panelAddDirectories.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add directories", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Small", 2, 14))); // NOI18N
         panelAddDirectories.setMaximumSize(new java.awt.Dimension(380, 278));
         panelAddDirectories.setName(""); // NOI18N

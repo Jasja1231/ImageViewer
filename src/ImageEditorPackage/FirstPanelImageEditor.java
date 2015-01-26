@@ -67,18 +67,18 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         buttonDir5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 102, 0));
         setMinimumSize(new java.awt.Dimension(476, 599));
         setName(""); // NOI18N
         setLayout(new java.awt.BorderLayout());
 
+        panelImageEditor.setBackground(new java.awt.Color(255, 102, 0));
         panelImageEditor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Image Editor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Text", 2, 14))); // NOI18N
         panelImageEditor.setMinimumSize(new java.awt.Dimension(0, 0));
         panelImageEditor.setName(""); // NOI18N
         panelImageEditor.setLayout(new java.awt.BorderLayout());
 
         panelForIcons.setLayout(new java.awt.CardLayout());
-
-        jpn1.setBackground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jpn1Layout = new javax.swing.GroupLayout(jpn1);
         jpn1.setLayout(jpn1Layout);
@@ -93,8 +93,6 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
 
         panelForIcons.add(jpn1, "jpn1");
 
-        jpn2.setBackground(new java.awt.Color(255, 255, 51));
-
         javax.swing.GroupLayout jpn2Layout = new javax.swing.GroupLayout(jpn2);
         jpn2.setLayout(jpn2Layout);
         jpn2Layout.setHorizontalGroup(
@@ -107,8 +105,6 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
         );
 
         panelForIcons.add(jpn2, "jpn2");
-
-        jpn3.setBackground(new java.awt.Color(0, 204, 153));
 
         javax.swing.GroupLayout jpn3Layout = new javax.swing.GroupLayout(jpn3);
         jpn3.setLayout(jpn3Layout);
@@ -123,7 +119,6 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
 
         panelForIcons.add(jpn3, "jpn3");
 
-        jpn4.setBackground(new java.awt.Color(0, 0, 204));
         jpn4.setName("jpn4"); // NOI18N
 
         javax.swing.GroupLayout jpn4Layout = new javax.swing.GroupLayout(jpn4);
@@ -139,7 +134,6 @@ public class FirstPanelImageEditor extends javax.swing.JPanel {
 
         panelForIcons.add(jpn4, "jpn4");
 
-        jpn5.setBackground(new java.awt.Color(0, 255, 255));
         jpn5.setName("jpn5"); // NOI18N
 
         javax.swing.GroupLayout jpn5Layout = new javax.swing.GroupLayout(jpn5);
