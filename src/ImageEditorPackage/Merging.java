@@ -26,6 +26,7 @@ public class Merging extends imagePanel {
     public BufferedImage img2;
     public BufferedImage result;
     public Image result_image;
+    public int option =0;
     
     
     public Merging() {
@@ -37,6 +38,9 @@ public class Merging extends imagePanel {
     {
         int fHeight = 0;
         int fWidth = 0;
+        int minHeight=0;
+        int minWidth = 0;
+        
         int x=0;
         int y=0;
         int i=0;
@@ -56,16 +60,38 @@ public class Merging extends imagePanel {
             
             //Resizing our images------------------------
             if(img1.getWidth()>img2.getWidth())
+            {
                 fWidth = img1.getWidth();
-            else fWidth = img2.getWidth();
+                minWidth = img2.getWidth();
+            }
+            else {
+                fWidth = img2.getWidth();
+                minWidth = img1.getWidth();
+            }
             
             if(img1.getHeight()>img2.getHeight())
+            {
                 fHeight = img1.getHeight();
-            else fHeight = img2.getHeight();
+                minHeight = img2.getHeight();
+            }
+            else {
+                fHeight = img2.getHeight();
+                minHeight = img1.getHeight();
+            }
+            int H=0,W=0;
+            if(option==1)
+            {
+                H=minHeight;
+                W=minWidth;
+            }
+            else{
+                H=fHeight;
+                W=fWidth;
+            }
             int typ = img1.getType() == 0? BufferedImage.TYPE_INT_ARGB : img1.getType();
-            img1 = resize(img1,fHeight,fWidth,typ);
+            img1 = resize(img1,H,W,typ);
                 typ = img2.getType() == 0? BufferedImage.TYPE_INT_ARGB : img2.getType();
-            img2 = resize(img2,fHeight,fWidth,typ);
+            img2 = resize(img2,H,W,typ);
             //--------------------------------------------
             //Merging part--------------------------------
             BufferedImage tempres1 = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);

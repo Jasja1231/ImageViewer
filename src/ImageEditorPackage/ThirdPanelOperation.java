@@ -147,7 +147,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Erlarge smaller", "Shrink bigger", "Center", "Center and cut" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Erlarge smaller", "Shrink bigger" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
