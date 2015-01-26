@@ -28,6 +28,8 @@ public class imagePanel extends javax.swing.JPanel {
     public boolean selected = false;
     public File fileOfImage;
     public Image imageInstance;
+    public BufferedImage buffimage;
+    
     public imagePanel() {
         initComponents();
     }
