@@ -8,6 +8,7 @@ package ImageEditorPackage;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -27,7 +28,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     String[] array = {".jpg",".png", ".jpeg"," .tiff",".tif"," .bmp" ,".JPG" };
     
     private   mainFrame parentFrame = (mainFrame) this.getParent();
-    public ArrayList<imagePanel> selectedDirectories = new  ArrayList<>();
+    public ArrayList<ArrayList<imagePanel>> selectedDirectories = new  ArrayList<>();
+    
     public void setParentFrame(mainFrame frame) {
         parentFrame = frame;
     }
@@ -469,7 +471,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
 
     private void buttonMergeDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeDirectoriesActionPerformed
 
-        ArrayList<imagePanel> currentDirectoriesToMerge = new ArrayList<>();
+        ArrayList<ArrayList<imagePanel>> currentDirectoriesToMerge = new ArrayList<>();
         try{
             currentDirectoriesToMerge = parentFrame.getOperationsPanel().selectedDirectories;
         }
@@ -492,10 +494,13 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 break;
         }
         
-        //Getting selected images  and putting them into ArrayList<File> inside Test(class Merging instance)
-        for(imagePanel imgPn : currentDirectoriesToMerge ){
-            if(imgPn.selected == true)
-                Test.imagesSelected.add(imgPn.fileOfImage);
+        //Getting selected images  and putting them into ArrayList<File> inside Test(class MergingDir instance)
+        for(ArrayList<imagePanel> imgPanCont : currentDirectoriesToMerge  ){
+            ArrayList<File> temp = new ArrayList();
+                for(imagePanel imgPn :imgPanCont ){
+                    temp.add(imgPn.fileOfImage);
+             }
+          Test.foldersWithImages.add(temp);
         }
         
         if(Test.imagesSelected.isEmpty() == true){
@@ -505,7 +510,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         else{
         //Merging operation in action
             try{
-                Test.merge(type);
+                Test.mergeDir(type);
             }
             catch(Exception e){}
         }
@@ -529,7 +534,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     public void actionForComboBox(boolean selected , ArrayList<imagePanel> imgesFromPanel){
      if(selected==false){
             selected = true;
-            selectedDirectories.addAll(imgesFromPanel);
+            //ArrayList<ArrayList<imagePanel>>
+            ArrayList<imagePanel> currentForConecting = new ArrayList();
+            currentForConecting.addAll(imgesFromPanel);
+            selectedDirectories.add(currentForConecting);
         }
         else if(selected==true){
             selected = false;
