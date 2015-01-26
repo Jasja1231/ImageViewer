@@ -47,11 +47,15 @@ public class Cutout {
 	Graphics2D g = result.createGraphics();
 	
         int maxSlides = imagesSelected.size()*number;
-        
         Vector<Integer> vectorForWidth = new Vector<>();
+        
+        for(int i=0;i<imagesSelected.size();i++)
+            {
+                vectorForWidth.add(0);
+            }
+        
         while(loop)
         {
-            
             for(int i=0;i<imagesSelected.size();i++)
             {
                 int strHeight;
@@ -60,20 +64,22 @@ public class Cutout {
                 img = ImageIO.read(imagesSelected.get(i));
                 strHeight=img.getHeight();
                 strWidth = img.getWidth()/number;
-                vectorForWidth.add(strWidth);
                         
                 BufferedImage temp;
+                if(x==0)
                 temp = img.getSubimage(x, 0, strWidth, strHeight);
+                else {
+                    x=vectorForWidth.get(i);
+                    temp = img.getSubimage(x, 0, strWidth, strHeight);
+                }
                 
                 g.drawImage(temp, xx, 0, strWidth, strHeight, null);
                 counter++;
                 
+                vectorForWidth.set(i,vectorForWidth.get(i)+ strWidth);
                 xx=xx+strWidth; 
             }
-            for(int i=0;i<imagesSelected.size()-1;i++)
-            {
-                x = x + vectorForWidth.get(i);
-            }
+            x++;
             if(counter==maxSlides)
                 break;
             }
