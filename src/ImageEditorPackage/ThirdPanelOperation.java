@@ -24,10 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-/**
- *
- * @author Jaryna
- */
+
 public class ThirdPanelOperation extends javax.swing.JPanel {
 
     /**
