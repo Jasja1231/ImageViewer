@@ -32,7 +32,7 @@ public class Cutout {
         
         int maxHeight = 0;
         int width=0;
-        for(int i=0;i<imagesSelected.size()-1;i++)
+        for(int i=0;i<imagesSelected.size();i++)
             {
                 img = ImageIO.read(imagesSelected.get(i));
                 width = width + img.getWidth();
@@ -52,7 +52,7 @@ public class Cutout {
         while(loop)
         {
             
-            for(int i=0;i<imagesSelected.size()-1;i++)
+            for(int i=0;i<imagesSelected.size();i++)
             {
                 int strHeight;
                 int strWidth;
