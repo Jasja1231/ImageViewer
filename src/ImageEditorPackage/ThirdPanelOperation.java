@@ -356,7 +356,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addComponent(buttonSaveSelected)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSaveAll)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonClearResults))
         );
 
@@ -372,7 +372,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -649,18 +649,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         
         //Getting type of selected choice how to merge (OR , XOR , AND)
         int type = 0 ;
-        
-        if(null != selectedButton)switch (selectedButton) {
-            case "AND":
-                type = 0;
-                break;
-            case "OR":
-                type = 1;
-                break;
-            case "XOR":
-                type = 2;
-                break;
-        }
+        if(jRadioButton5.isSelected())
+            type=1;
         
         //Getting selected images  and putting them into ArrayList<File> inside Test(class Merging instance)
         for(imagePanel imgPn : currentSelectedImagePanels ){
