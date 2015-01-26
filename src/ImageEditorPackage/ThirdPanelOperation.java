@@ -6,6 +6,7 @@
 package ImageEditorPackage;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -466,7 +467,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                         .addComponent(buttonSaveSelected)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonClearResults)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 25, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -483,11 +484,16 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMergeSelectedPicturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeSelectedPicturesActionPerformed
+        parentFrame.getImageEditor().getPanelForIcons().revalidate();
+        parentFrame.getImageEditor().getPanelForIcons().repaint();
+        CardLayout card = (CardLayout) parentFrame.getImageEditor().getPanelForIcons().getLayout();
+        card.show(parentFrame.getImageEditor().getPanelForIcons(), "result");
+        
         ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
 
         try{
@@ -654,6 +660,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     private void buttonMergeDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeDirectoriesActionPerformed
         //currentDirectories - all the elements we have , we will search the ones that are selected 
+        CardLayout card = (CardLayout) parentFrame.getImageEditor().getPanelForIcons().getLayout();
+        card.show(parentFrame.getImageEditor().getPanelForIcons(), "result");
         ArrayList<ArrayList<imagePanel>> currentDirectoriesToMerge = new ArrayList<>();
         try{
             currentDirectoriesToMerge = parentFrame.getOperationsPanel().selectedDirectories;
@@ -751,7 +759,9 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }//GEN-LAST:event_box5ActionPerformed
 
     private void buttonCutoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCutoutActionPerformed
-       ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
+        CardLayout card = (CardLayout) parentFrame.getImageEditor().getPanelForIcons().getLayout();
+        card.show(parentFrame.getImageEditor().getPanelForIcons(), "result");
+        ArrayList<imagePanel> currentSelectedImagePanels = new ArrayList<>();
        number  = Integer.parseInt(textStripe.getText());
         try{
             currentSelectedImagePanels = parentFrame.getImageEditor().getCurrentPanelSetOfImages();
