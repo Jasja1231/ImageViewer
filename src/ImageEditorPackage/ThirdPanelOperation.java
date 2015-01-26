@@ -11,12 +11,9 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import static java.lang.Math.random;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -35,12 +32,14 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     private   mainFrame parentFrame = (mainFrame) this.getParent();
     public ArrayList<ArrayList<imagePanel>> selectedDirectories = new  ArrayList<>();
-    public ArrayList<imagePanel> resultArray  = new ArrayList<>();
+    //array for storing images from result panel to operate with prodused images
+    private ArrayList<imagePanel> resultArray  = new ArrayList<>();
+    private int sizeType = 0 ; 
     
     public void setParentFrame(mainFrame frame) {
         parentFrame = frame;
     }
-    
+    //group of buttons related to different operations
     ButtonGroup group  = new ButtonGroup();
     ButtonGroup group_cutout  = new ButtonGroup();
     ButtonGroup group_format  = new ButtonGroup();
@@ -49,7 +48,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     String selectedSizeType = "ErlargeSmaller";
     //0 - ErlargeSmaller 1 - Shrink Bigger 2- Center(put in the middle) 3 - CutOut
-    public int sizeType = 0 ; 
+    
     
     public ThirdPanelOperation() {
         initComponents();
@@ -115,11 +114,14 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(2147483647, 200));
         setPreferredSize(new java.awt.Dimension(300, 353));
 
+        panelForOperations.setBackground(new java.awt.Color(255, 102, 0));
         panelForOperations.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 14))); // NOI18N
         panelForOperations.setPreferredSize(new java.awt.Dimension(300, 535));
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Merge", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 102, 0));
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("AND");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +130,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 102, 0));
         jRadioButton2.setText("OR");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +138,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jRadioButton3.setBackground(new java.awt.Color(255, 102, 0));
         jRadioButton3.setText("XOR");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,8 +204,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(255, 102, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Directories To merge", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
+        box1.setBackground(new java.awt.Color(255, 102, 0));
         box1.setText("Directory 1");
         box1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +215,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        box2.setBackground(new java.awt.Color(255, 102, 0));
         box2.setText("Directory 2");
         box2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +223,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        box3.setBackground(new java.awt.Color(255, 102, 0));
         box3.setText("Directory 3");
         box3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +231,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        box5.setBackground(new java.awt.Color(255, 102, 0));
         box5.setText("Directory 5");
         box5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +239,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        box4.setBackground(new java.awt.Color(255, 102, 0));
         box4.setText("Directory 4");
         box4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,11 +283,14 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cutout options", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
+        jRadioButton4.setBackground(new java.awt.Color(255, 102, 0));
         jRadioButton4.setSelected(true);
         jRadioButton4.setText("Vertical Cutout");
 
+        jRadioButton5.setBackground(new java.awt.Color(255, 102, 0));
         jRadioButton5.setText("Horizontal Cutout");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,8 +349,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(255, 102, 0));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save as", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 10))); // NOI18N
 
+        formatPNG.setBackground(new java.awt.Color(255, 102, 0));
         formatPNG.setText("PNG");
         formatPNG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,6 +360,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        formatBMP.setBackground(new java.awt.Color(255, 102, 0));
         formatBMP.setText("BMP");
         formatBMP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,6 +368,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        formatTIFF.setBackground(new java.awt.Color(255, 102, 0));
         formatTIFF.setText("TIFF");
         formatTIFF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +376,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        formatJPEG.setBackground(new java.awt.Color(255, 102, 0));
         formatJPEG.setText("JPEG");
         formatJPEG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,6 +384,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
         });
 
+        formatJPG.setBackground(new java.awt.Color(255, 102, 0));
         formatJPG.setText("JPG");
         formatJPG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +498,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         
         //Getting type of selected choice how to merge (OR , XOR , AND)
         int type = 0 ;
-        
+        //take the type of a merge from the user , And is default one
         if(null != selectedButton)switch (selectedButton) {
             case "AND":
                 type = 0;
@@ -515,21 +534,20 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
 
     
    
-    
+    //panel that  is parent to all the results we produce , to show them
     JPanel jpn1child = new JPanel();
     JScrollPane scrollpane = new JScrollPane(jpn1child);
     
     public void fullFillPanelwithOneMergedImage(JPanel JpnN , Image image , BufferedImage buff ){
         GenericExtFilter filter = new GenericExtFilter(array);
-        //JpnN.removeAll();
         
-        JpnN.setBackground(java.awt.Color.ORANGE);
-        
+        //setting layout to show images nicely
         jpn1child.setLayout(new GridLayout(0,2));
         
         if(image!=null){
             imagePanel jp = new imagePanel(image  , null);
             jp.setSize(300,300);
+            //sorying copy of image as a buffered inage
             jp.buffimage = buff;
             jpn1child.add(jp);
             jp.setVisible(true);
@@ -548,13 +566,12 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
     public void fullFillPanelwithDirMerged(JPanel JpnN ,ArrayList<Image> images , ArrayList<BufferedImage> buff){
         GenericExtFilter filter = new GenericExtFilter(array);
-        
-        
-        JpnN.setBackground(java.awt.Color.pink);
-        
+         //setting layout to show images nicely
         jpn1child.setLayout(new GridLayout(0,2));
         int i = 0;
+        //check  is images do not exist == nillptr 
         if(images!=null){
+            //move throught images from array with images of merged images
             for(Image image : images){
                 
                 imagePanel jp = new imagePanel(image  , null);
@@ -572,6 +589,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         scrollpane.setBounds(30, 50, parentFrame.getImageEditor().getPanelForResult().getParent().getWidth(), 20000);
         JpnN.setLayout(new BorderLayout());
         JpnN.add(scrollpane , BorderLayout.CENTER);
+        //updating panel
         JpnN.repaint();
         JpnN.revalidate();
         parentFrame.getImageEditor().getPanelForIcons().updateUI();
@@ -579,9 +597,6 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     
  public void fullFillPanelwithCutout(JPanel JpnN ,Image image , BufferedImage buff ){
         GenericExtFilter filter = new GenericExtFilter(array);
-        
-        
-        JpnN.setBackground(java.awt.Color.pink);
         
         jpn1child.setLayout(new GridLayout(0,2));
         
@@ -603,12 +618,6 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         parentFrame.getImageEditor().getPanelForIcons().updateUI();
     }
     
-    
-                               
-
-    
-    
-    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        //0 - ErlargeSmaller 1 - Shrink Bigger 2- Center(put in the middle) 3 - CutOut
         selectedSizeType =jComboBox1.getSelectedItem().toString();
@@ -627,7 +636,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 break;
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+//Set the choices of radio buttons of goup group
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         selectedButton = "AND";
     }//GEN-LAST:event_jRadioButton1ActionPerformed
@@ -642,8 +651,9 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         selectedButton = "XOR";
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    
     private void buttonMergeDirectoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMergeDirectoriesActionPerformed
-
+        //currentDirectories - all the elements we have , we will search the ones that are selected 
         ArrayList<ArrayList<imagePanel>> currentDirectoriesToMerge = new ArrayList<>();
         try{
             currentDirectoriesToMerge = parentFrame.getOperationsPanel().selectedDirectories;
@@ -687,18 +697,20 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             }
             catch(Exception e){}
         }
-        
+        //displaying the result
         fullFillPanelwithDirMerged(parentFrame.getImageEditor().getPanelForResult() , Test.resultDir , Test.resultDirr );                        
 
     }//GEN-LAST:event_buttonMergeDirectoriesActionPerformed
 
     private void buttonClearResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearResultsActionPerformed
+        //cleaning result panel and the array that stores the result , updating Result panel
         parentFrame.getImageEditor().getPanelForResult().removeAll();
         jpn1child.removeAll();
         parentFrame.getImageEditor().getPanelForResult().updateUI();
         resultArray.clear();
     }//GEN-LAST:event_buttonClearResultsActionPerformed
 
+    //variables to determine which directories are selected to merge
     boolean selectedDir1 = false;
     boolean selectedDir2 = false;
     boolean selectedDir3 = false;
@@ -745,6 +757,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             currentSelectedImagePanels = parentFrame.getImageEditor().getCurrentPanelSetOfImages();
         }
         catch(Exception exc){}
+        //cutout - instance of class cutout
         Cutout Test = new Cutout();
         int type = 0 ;
         //Getting type of selected choice how to merge (OR , XOR , AND)
@@ -782,8 +795,10 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
        
     }//GEN-LAST:event_textStripeActionPerformed
 
+    //save result (producced images into the files on users computer)
     private void buttonSaveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveSelectedActionPerformed
-       JFileChooser jFile = new JFileChooser();
+       // creating  a new filechooser to select directory user wants to save images
+        JFileChooser jFile = new JFileChooser();
         jFile.setDialogTitle("Save file ...");
         jFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnValue  = jFile.showSaveDialog(parentFrame);
@@ -837,6 +852,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
   
     }//GEN-LAST:event_buttonSaveAllActionPerformed
     
+    //default extention for dsaving results is jpg
     private String extention = ".jpg";    
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
         
