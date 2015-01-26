@@ -6,6 +6,7 @@
 package ImageEditorPackage;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Merging_Directories extends Merging {
     
     public ArrayList<ArrayList<File>> foldersWithImages = new ArrayList<>();
     public ArrayList<Image> resultDir;
+    public ArrayList<BufferedImage> resultDirr;
     
     
     void mergeDir(int type){
@@ -49,7 +51,10 @@ public class Merging_Directories extends Merging {
             } catch (IOException ex) {
                 Logger.getLogger(Merging_Directories.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Image tempimg = SingleMerge.result_image; 
+            Image tempimg = SingleMerge.result_image;
+            BufferedImage result = SingleMerge.result;
+            
+            resultDirr.add(result);
             resultDir.add(tempimg);
             num++;
         }
