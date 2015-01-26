@@ -19,11 +19,12 @@ import java.util.logging.Logger;
 public class Merging_Directories extends Merging {
     
     public ArrayList<ArrayList<File>> foldersWithImages = new ArrayList<>();
-    public ArrayList<Image> result_images;
+    public ArrayList<Image> resultDir;
     
     
     void mergeDir(int type){
         int num = 0;
+        resultDir = new ArrayList<Image>();
         while(true)
         {
             int check =0;
@@ -48,7 +49,8 @@ public class Merging_Directories extends Merging {
             } catch (IOException ex) {
                 Logger.getLogger(Merging_Directories.class.getName()).log(Level.SEVERE, null, ex);
             }
-            result_images.add(SingleMerge.result_image);
+            Image tempimg = SingleMerge.result_image; 
+            resultDir.add(tempimg);
             num++;
         }
         

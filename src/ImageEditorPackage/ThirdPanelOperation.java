@@ -411,8 +411,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         
         jpn1child.setLayout(new GridLayout(0,2));
         
-        for(Image image : images){
         if(images!=null){
+            for(Image image : images){
                 imagePanel jp = new imagePanel(image  , null);
                 jp.setSize(300,300);
                 jpn1child.add(jp);
@@ -503,7 +503,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
           Test.foldersWithImages.add(temp);
         }
         
-        if(Test.imagesSelected.isEmpty() == true){
+        if(Test.foldersWithImages.isEmpty() == true){
             //custom title, error icon
             JOptionPane.showMessageDialog(parentFrame,"Choose image/directory before you merge","" ,JOptionPane.ERROR_MESSAGE);
         }
@@ -515,7 +515,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
             catch(Exception e){}
         }
         
-        fullFillPanelwithDirMerged(parentFrame.getImageEditor().getPanelForResult() , Test.result_images );                        
+        fullFillPanelwithDirMerged(parentFrame.getImageEditor().getPanelForResult() , Test.resultDir );                        
 
     }//GEN-LAST:event_buttonMergeDirectoriesActionPerformed
 
