@@ -5,11 +5,13 @@
  */
 package ImageEditorPackage;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.imageio.ImageIO;
 
 /**
@@ -19,27 +21,64 @@ import javax.imageio.ImageIO;
 public class Cutout {
     
     public ArrayList<File> imagesSelected = new ArrayList<>();
-    public BufferedImage img1;
+    public BufferedImage img;
     public BufferedImage result;
     public Image result_image;
     
-    public void merge(int type) throws IOException
+    public void cut(int number) throws IOException
     {
-        int fHeight = 0;
-        int fWidth = 0;
-        int x=0;
-        int y=0;
-        int i=0;
-        BufferedImage prev = null;
-        //BufferedImage croppedImage = originalImage.getSubimage(x, y, width, height);
+        boolean loop = true;
+        int counter =0;
         
-        for(;i<imagesSelected.size()-1;i++)
+        int maxHeight = 0;
+        int width=0;
+        for(int i=0;i<imagesSelected.size()-1;i++)
+            {
+                img = ImageIO.read(imagesSelected.get(i));
+                width = width + img.getWidth();
+                if(img.getHeight()>maxHeight)
+                    maxHeight=img.getHeight();
+            }
+        
+        int x=0, xx=0;
+        
+        BufferedImage result;
+        result = new BufferedImage(width, maxHeight, BufferedImage.TYPE_INT_ARGB);
+	Graphics2D g = result.createGraphics();
+	
+        int maxSlides = imagesSelected.size()*number;
+        
+        Vector<Integer> vectorForWidth = new Vector<>();
+        while(loop)
         {
             
-        }
-        result = new BufferedImage(fWidth, fHeight,BufferedImage.TYPE_INT_RGB);
-        result = prev;     
-        
+            for(int i=0;i<imagesSelected.size()-1;i++)
+            {
+                int strHeight;
+                int strWidth;
+                
+                img = ImageIO.read(imagesSelected.get(i));
+                strHeight=img.getHeight();
+                strWidth = img.getWidth()/number;
+                vectorForWidth.add(strWidth);
+                        
+                BufferedImage temp;
+                temp = img.getSubimage(x, 0, strWidth, strHeight);
+                
+                g.drawImage(temp, xx, 0, strWidth, strHeight, null);
+                counter++;
+                
+                xx=xx+strWidth; 
+            }
+            for(int i=0;i<imagesSelected.size()-1;i++)
+            {
+                x = x + vectorForWidth.get(i);
+            }
+            if(counter==maxSlides)
+                break;
+            }
+        g.dispose();
         result_image = result.getScaledInstance((int)result.getWidth()-4, (int)result.getHeight(),BufferedImage.TYPE_INT_RGB);
+        }
+        
     }
-}
