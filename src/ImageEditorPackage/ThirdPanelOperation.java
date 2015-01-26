@@ -303,7 +303,7 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonClearResults1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonClearResults))
         );
 
@@ -314,12 +314,12 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+            .addComponent(panelForOperations, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -408,8 +408,9 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
         JpnN.setBackground(java.awt.Color.pink);
         
         jpn1child.setLayout(new GridLayout(0,2));
+        
         for(Image image : images){
-        if(image!=null){
+        if(images!=null){
                 imagePanel jp = new imagePanel(image  , null);
                 jp.setSize(300,300);
                 jpn1child.add(jp);
@@ -556,7 +557,8 @@ public class ThirdPanelOperation extends javax.swing.JPanel {
     }//GEN-LAST:event_box5ActionPerformed
 
     private void buttonClearResults1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearResults1ActionPerformed
-        // TODO add your handling code here:
+       
+        
     }//GEN-LAST:event_buttonClearResults1ActionPerformed
 
 
